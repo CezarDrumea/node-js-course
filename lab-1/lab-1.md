@@ -4,7 +4,7 @@ Pentru primul laborator, va trebui să realizați una dintre aplicațiile de mai
 2. **Urmăritor de Cheltuieli**
 3. **Urmăritor de Obiceiuri (Habit Tracker)**
 4. **Listă de Lectură** (Mihaela Galusnic)
-5. **Listă de Vizionare (Watchlist)**
+5. **Listă de Vizionare (Watchlist)**(Gligor Anastasia)
 6. **Jurnal de Fitness**
 7. **Planificator de Mese**
 8. **Jurnal Personal**
