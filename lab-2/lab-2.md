@@ -1,0 +1,1 @@
+Extindeți funcționalul aplicației alese adaugând autentificare folosind **JWT** și **Cookie based authentication**. Ar trebui să aveți 2 versiuni noi ale aplicației. Exemplu aveți îm aplicația **auth-app**.

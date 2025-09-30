@@ -1,0 +1,118 @@
+:root {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+    Noto Sans, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f6f7fb;
+  color: #222;
+}
+
+header {
+  background: #20232a;
+  color: #fff;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 a {
+  color: #61dafb;
+  text-decoration: none;
+}
+
+nav a {
+  color: #fff;
+  margin-left: 12px;
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+nav a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+main {
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+form {
+  display: grid;
+  gap: 10px;
+  max-width: 520px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+}
+
+input[type='text'],
+input[type='number'],
+select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+input[type='checkbox'] {
+  width: fit-content;
+}
+
+.btn {
+  font-size: 14px;
+  text-align: center;
+  display: block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #222;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.secondary {
+  background: #666;
+}
+
+.btn.danger {
+  background: purple;
+}

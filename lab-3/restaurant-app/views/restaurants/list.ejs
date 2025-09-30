@@ -1,0 +1,38 @@
+<%- include('../layout-start') %>
+<section class="card">
+  <div class="header-row">
+    <h2>Restaurants</h2>
+    <a class="btn" href="/restaurants/new">+ New Restaurant</a>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Dishes</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% restaurants.forEach(r => { %>
+      <tr>
+        <td><%= r.name %></td>
+        <td><%= r.address %></td>
+        <td><%= r.dishes?.length || 0 %></td>
+        <td class="actions">
+          <a class="btn secondary" href="/restaurants/<%= r.id %>/edit">Edit</a>
+          <form
+            method="POST"
+            action="/restaurants/<%= r.id %>?_method=DELETE"
+            onsubmit="return confirm('Delete this restaurant and its dishes?')"
+          >
+            <button class="btn danger" type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
+
+<%- include('../layout-end') %>

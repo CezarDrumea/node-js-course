@@ -1,0 +1,40 @@
+<%- include('../layout-start') %>
+<section class="card">
+  <div class="header-row">
+    <h2>Dishes</h2>
+    <a class="btn" href="/dishes/new">+ New Dish</a>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Available</th>
+        <th>Restaurant</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% dishes.forEach(d => { %>
+      <tr>
+        <td><%= d.name %></td>
+        <td>$<%= d.price.toFixed(2) %></td>
+        <td><%= d.isAvailable ? 'Yes' : 'No' %></td>
+        <td><%= d.restaurant?.name || '—' %></td>
+        <td class="actions">
+          <a class="btn secondary" href="/dishes/<%= d.id %>/edit">Edit</a>
+          <form
+            method="POST"
+            action="/dishes/<%= d.id %>?_method=DELETE"
+            onsubmit="return confirm('Delete this dish?')"
+          >
+            <button class="btn danger" type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
+
+<%- include('../layout-end') %>

@@ -1,0 +1,24 @@
+{
+  "tasks": [
+    {
+      "id": "6428",
+      "text": "Learn Nest js",
+      "done": true
+    },
+    {
+      "id": "9f94",
+      "text": "Learn Express",
+      "done": false
+    },
+    {
+      "id": "5b47",
+      "text": "adsfhlasdhljfk",
+      "done": false
+    },
+    {
+      "id": "d6ed",
+      "text": "Go to gym",
+      "done": true
+    }
+  ]
+}

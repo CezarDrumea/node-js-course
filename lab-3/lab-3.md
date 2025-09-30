@@ -1,0 +1,1 @@
+Extindeți funcționalul aplicației adaugând o bază de date relațională (MySQL, SQLite, Oracle, SQL Server, PostgreSQL etc.) și un ORM (Sequalize sau Prisma). Exemplu aveți în aplicația **restaurant-app**.

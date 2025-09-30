@@ -1,0 +1,22 @@
+<%- include('../layout-start') %>
+<section class="card">
+  <h2>Edit Restaurant</h2>
+  <form method="POST" action="/restaurants/<%= restaurant.id %>?_method=PUT">
+    <label
+      >Name
+      <input type="text" name="name" value="<%= restaurant.name %>" required
+    /></label>
+    <label
+      >Address
+      <input
+        type="text"
+        name="address"
+        value="<%= restaurant.address %>"
+        required
+    /></label>
+    <button class="btn" type="submit">Save</button>
+    <a class="btn secondary" href="/restaurants">Cancel</a>
+  </form>
+</section>
+
+<%- include('../layout-end') %>

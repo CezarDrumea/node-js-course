@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Auth App</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        max-width: 800px;
+        margin: 2rem auto;
+      }
+      section {
+        margin-bottom: 2rem;
+      }
+      pre {
+        background: #f6f6f6;
+        padding: 1rem;
+        border-radius: 8px;
+        overflow: auto;
+      }
+      input,
+      button {
+        margin: 0.25rem 0;
+      }
+    </style>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <h1>Auth App</h1>
+
+    <!-- Cookie Auth -->
+    <section>
+      <h2>Cookie Auth</h2>
+      <form id="cookieLogin" autocomplete="off">
+        <input name="username" placeholder="username" value="" />
+        <input
+          name="password"
+          placeholder="password"
+          type="password"
+          value=""
+          autocomplete="new-password"
+        />
+        <button type="submit">Login (Cookie)</button>
+      </form>
+      <div>
+        <button id="cookieProfile">Get Profile (Cookie)</button>
+        <button id="cookieLogout">Logout (Cookie)</button>
+      </div>
+      <pre id="cookieOutput"></pre>
+    </section>
+
+    <hr />
+
+    <!-- JWT Auth -->
+    <section>
+      <h2>JWT Auth (token saved in localStorage)</h2>
+      <form id="jwtLogin" autocomplete="off">
+        <input name="username" placeholder="username" />
+        <input
+          name="password"
+          placeholder="password"
+          type="password"
+          autocomplete="new-password"
+        />
+        <button type="submit">Login (JWT)</button>
+      </form>
+      <div>
+        <button id="jwtProfile">Get Profile (JWT)</button>
+        <button id="jwtMyData">Call /my-data-jwt (JWT)</button>
+        <button id="jwtLogout">Logout (JWT)</button>
+      </div>
+      <p><strong>Stored token:</strong> <code id="tokenPreview"></code></p>
+      <pre id="jwtOutput"></pre>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<%- include('../layout-start') %>
+<section class="card">
+  <h2>New Dish</h2>
+  <form method="POST" action="/dishes">
+    <label>Name <input type="text" name="name" required /></label>
+    <label
+      >Price <input type="number" min="0" step="0.01" name="price" required
+    /></label>
+    <label>
+      Available
+      <input type="checkbox" name="isAvailable" value="true" checked />
+    </label>
+    <label>
+      Restaurant
+      <select name="restaurantId" required>
+        <% restaurants.forEach(r => { %>
+        <option value="<%= r.id %>"><%= r.name %></option>
+        <% }) %>
+      </select>
+    </label>
+    <button class="btn" type="submit">Create</button>
+    <a class="btn secondary" href="/dishes">Cancel</a>
+  </form>
+</section>
+
+<%- include('../layout-end') %>

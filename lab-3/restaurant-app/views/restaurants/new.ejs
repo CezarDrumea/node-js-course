@@ -1,0 +1,12 @@
+<%- include('../layout-start') %>
+<section class="card">
+  <h2>New Restaurant</h2>
+  <form method="POST" action="/restaurants">
+    <label>Name <input type="text" name="name" required /></label>
+    <label>Address <input type="text" name="address" required /></label>
+    <button class="btn" type="submit">Create</button>
+    <a class="btn secondary" href="/restaurants">Cancel</a>
+  </form>
+</section>
+
+<%- include('../layout-end') %>
