@@ -1,6 +1,6 @@
 Pentru primul laborator, va trebui să realizați una dintre aplicațiile de mai sus folosind **Express**, un **templating engine** (ex: EJS, Pug, Handlebars) și **JSON Server** pentru a simula baza de date (sau un simplu fișier **.txt** din care veți citi și veți scrie date folosind modulul **fs**). Exemplu de proiect este aplicația **todo-app**.
 
-1. **Aplicație de Notițe**
+1. **Aplicație de Notițe** Cazacu AnastasiaIA2301
 2. **Urmăritor de Cheltuieli**
 3. **Urmăritor de Obiceiuri (Habit Tracker)**
 4. **Listă de Lectură**
