@@ -1,0 +1,14 @@
+https://www.theodinproject.com/paths/full-stack-javascript/courses/nodejs
+
+https://nodejs.org/en/learn/getting-started/introduction-to-nodejs
+
+https://www.codecademy.com/learn/learn-node-js
+
+https://www.freecodecamp.org/news/tag/nodejs/
+
+https://www.freecodecamp.org/news/get-started-with-nodejs/
+
+https://www.freecodecamp.org/news/free-8-hour-node-express-course/
+
+https://www.freecodecamp.org/learn/back-end-development-and-apis/
+
