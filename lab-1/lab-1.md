@@ -8,7 +8,7 @@ Pentru primul laborator, va trebui să realizați una dintre aplicațiile de mai
 6. **Jurnal de Fitness**
 7. **Planificator de Mese**
 8. **Jurnal Personal**
-9. **Manager de Parole (Local)** (Straton Alexandru IA2302)
+9. **Manager de Parole (Local)** (Straton Alexandru IA2302) (Țarguș Sorin)
 10. **Jurnal de Recunoștință**
 11. **Carte de Rețete Digitală**
 12. **Listă de Cumpărături**
@@ -29,5 +29,5 @@ Pentru primul laborator, va trebui să realizați una dintre aplicațiile de mai
 27. **Scurtător de URL-uri (intern)**
 28. **Aplicație de Sondaje Simple**
 29. **Vizualizator API de Rețete**
-30. **Generator de Nume Aleatorii**
+30. **Generator de Nume Aleatorii** (Sircu Mihai)
 31. **Site de events locale** (Isac Jasmina)
