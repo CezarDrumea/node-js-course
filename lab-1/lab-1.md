@@ -30,3 +30,4 @@ Pentru primul laborator, va trebui să realizați una dintre aplicațiile de mai
 28. **Aplicație de Sondaje Simple**
 29. **Vizualizator API de Rețete**
 30. **Generator de Nume Aleatorii**
+31. **Site de events locale** (Isac Jasmina)
