@@ -15,7 +15,7 @@ Pentru primul laborator, va trebui să realizați una dintre aplicațiile de mai
 13. **Manager de Inventar Acasă**
 14. **Program de Îngrijire Plante**
 15. **Dosar Medical Animale**
-16. **Listă de Cadouri**
+16. **Listă de Cadouri**(Bubucea Rodica)
 17. **Jurnal de Întreținere Auto**
 18. **Colecționar de Citate**
 19. **Manager de Adrese (Contacte)**
