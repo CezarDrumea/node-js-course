@@ -1,0 +1,30 @@
+{
+  "name": "validation-app",
+  "version": "1.0.0",
+  "description": "Demo Express app showcasing backend validation with Zod and express-validator, plus security middlewares.",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --watch src/server.js"
+  },
+  "keywords": [
+    "express",
+    "zod",
+    "validation",
+    "helmet",
+    "rate-limit"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "express-validator": "^7.2.0",
+    "helmet": "^7.1.0",
+    "morgan": "^1.10.0",
+    "zod": "^3.23.8"
+  }
+}

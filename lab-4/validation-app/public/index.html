@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Validation App</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Validation App</h1>
+      <p>Backend validation with Zod and express-validator</p>
+    </header>
+
+    <main>
+      <section class="create">
+        <h2>Create user (Zod)</h2>
+        <form id="create-form">
+          <label>
+            Name
+            <input
+              type="text"
+              name="name"
+              required
+              minlength="2"
+              maxlength="50"
+            />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" required />
+          </label>
+          <label>
+            Age
+            <input type="number" name="age" min="13" max="120" />
+          </label>
+          <label>
+            Role
+            <select name="role">
+              <option value="student">student</option>
+              <option value="teacher">teacher</option>
+              <option value="admin">admin</option>
+            </select>
+          </label>
+          <button type="submit">Create</button>
+        </form>
+        <pre id="form-error" class="error" hidden></pre>
+      </section>
+
+      <section class="list">
+        <h2>Users</h2>
+        <div class="filters">
+          <label>
+            Role
+            <select id="filter-role">
+              <option value="">(any)</option>
+              <option value="student">student</option>
+              <option value="teacher">teacher</option>
+              <option value="admin">admin</option>
+            </select>
+          </label>
+          <label>
+            Min age
+            <input type="number" id="filter-minAge" />
+          </label>
+          <label>
+            Max age
+            <input type="number" id="filter-maxAge" />
+          </label>
+          <button id="refresh">Refresh</button>
+        </div>
+        <pre id="list-error" class="error" hidden></pre>
+        <ul id="users"></ul>
+      </section>
+
+      <section class="validator">
+        <h2>message count (express-validator)</h2>
+        <form id="validator-form">
+          <label>
+            Title
+            <input
+              type="text"
+              name="title"
+              required
+              minlength="3"
+              maxlength="100"
+            />
+          </label>
+          <label>
+            Count
+            <input type="number" name="count" min="0" max="1000" />
+          </label>
+          <label>
+            Draft?
+            <input type="checkbox" name="draft" />
+          </label>
+          <button type="submit">Send</button>
+        </form>
+        <pre id="validator-result"></pre>
+      </section>
+    </main>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>
