@@ -1,6 +1,5 @@
 import * as model from '../models/tasks.model.js';
 
-// Server-side rendered page
 export async function renderList(req, res, next) {
   try {
     const tasks = await model.list();
@@ -10,7 +9,6 @@ export async function renderList(req, res, next) {
   }
 }
 
-// JSON endpoints (used by client-side fetch)
 export async function getAll(req, res, next) {
   try {
     const tasks = await model.list();
