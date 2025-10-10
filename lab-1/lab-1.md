@@ -5,7 +5,7 @@ Pentru primul laborator, va trebui să realizați una dintre aplicațiile de mai
 3. **Urmăritor de Obiceiuri (Habit Tracker)**
 4. **Listă de Lectură** (Mihaela Galusnic) (Darii Daniela)
 5. **Listă de Vizionare (Watchlist)**(Gligor Anastasia)
-6. **Jurnal de Fitness**
+6. **Jurnal de Fitness**(Bragaru Cristina IA2301)
 7. **Planificator de Mese**
 8. **Jurnal Personal** (Puiu Andreea)
 9. **Manager de Parole (Local)** (Straton Alexandru IA2302) (Țarguș Sorin)
