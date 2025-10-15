@@ -24,7 +24,7 @@ Pentru primul laborator, va trebui să realizați una dintre aplicațiile de mai
 22. **Manager de Fragmente de Cod**
 23. **Glosar de Termeni**
 24. **Urmăritor de Bug-uri (Personal)**
-25. **Manager Simplu de Programări**
+25. **Manager Simplu de Programări** (Andriuta Jana)
 26. **Urmăritor de Cursuri**
 27. **Scurtător de URL-uri (intern)**
 28. **Aplicație de Sondaje Simple**
