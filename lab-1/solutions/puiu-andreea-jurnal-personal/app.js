@@ -15,4 +15,14 @@ app.get("/", (req, res) => {
     res.render("login");
 });
 
+// pagina de creare cont
+app.get("/register", (req, res) => {
+    res.render("register");
+});
+
+// pagina după login
+app.get("/dashboard", (req, res) => {
+    res.render("dashboard", { journals: [] });
+});
+
 app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
