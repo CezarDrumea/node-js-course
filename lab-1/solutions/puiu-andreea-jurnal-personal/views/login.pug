@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1 Jurnal Personal - Login
+    form(action="/login" method="POST")
+        input(type="text" name="username" placeholder="Username" required)
+        input(type="password" name="password" placeholder="Parola" required)
+        button(type="submit") Conecteaza-te
+    p Nu ai cont?
+
