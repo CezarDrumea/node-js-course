@@ -7,11 +7,11 @@ Pentru primul laborator, va trebui să realizați una dintre aplicațiile de mai
 5. **Listă de Vizionare (Watchlist)**(Gligor Anastasia)
 6. **Jurnal de Fitness**
 7. **Planificator de Mese**
-8. **Jurnal Personal**
+8. **Jurnal Personal** (Puiu Andreea)
 9. **Manager de Parole (Local)** (Straton Alexandru IA2302) (Țarguș Sorin)
 10. **Jurnal de Recunoștință**
 11. **Carte de Rețete Digitală**
-12. **Listă de Cumpărături**
+12. **Listă de Cumpărături** (Gortolomei Sorin IA2301)
 13. **Manager de Inventar Acasă**
 14. **Program de Îngrijire Plante**
 15. **Dosar Medical Animale**

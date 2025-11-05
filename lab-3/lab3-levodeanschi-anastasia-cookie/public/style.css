@@ -1,0 +1,333 @@
+:root {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+    Noto Sans, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;           /* ocupă întreaga înălțime a ferestrei */
+    display: flex;
+    flex-direction: column;      /* pentru formular + listă */
+    justify-content: center;     /* centrare verticală */
+    align-items: center;         /* centrare orizontală */
+    background-color: #e2e2aa;  /* fundalul tău */
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif;
+
+}
+
+.container {
+    max-width: 720px;
+    padding: 40px;
+}
+
+h1 {
+    font-weight: 700;
+    margin: 0;
+    color: #03036e;
+    text-align: center;
+}
+
+
+form#register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+
+form#login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+
+textarea#create-input {
+    width: 300px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #999;
+}
+
+.alert {
+    background: #2b1a1a;
+    color: #ffb3b3;
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.create {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.create input {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #2a2f3a;
+    background: lightcoral;
+    color: #eaeff3;
+}
+
+.create button {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #3b82f6;
+    color: white;
+    cursor: pointer;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 12px;
+    background: #7a0b73;
+    border: 1px solid #232835;
+    border-radius: 10px;
+
+    max-width: 600px; /* limitează lățimea maximă */
+    width: 100%;       /* ocupă tot spațiul disponibil până la max-width */
+    margin: 0 auto;    /* centrează elementul pe orizontală */
+}
+
+.item .text.done {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.item .actions {
+    display: flex;
+    gap: 6px;
+}
+
+.item button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
+    background: #232835;
+    color: #eaeff3;
+    cursor: pointer;
+}
+
+.item button:hover {
+    filter: brightness(1.1);
+}
+.actions {
+    display: flex;
+    gap: 5px;
+}
+
+.actions button {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* Stil buton Edit */
+.actions button.edit {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.actions button.edit:hover {
+    background-color: #45a049;
+}
+
+/* Stil buton Remove */
+.actions button.remove {
+    background-color: #f44336;
+    color: white;
+}
+
+.actions button.remove:hover {
+    background-color: #e53935;
+}
+
+p {
+    color: darkorchid;
+}
+
+/* styles.css */
+
+form#register-form {
+    background: lightseagreen;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    margin: 50px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+form#login-form {
+    background: lightseagreen;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    margin: 50px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+
+form#register-form input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: lightcoral; /* violet */
+    color: #fff;               /* text alb */
+}
+form#login-form input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: lightcoral; /* violet */
+    color: #fff;               /* text alb */
+}
+
+/* Când inputul e focusat sau completat */
+form#register-form input:focus,
+form#register-form input:valid {
+    background-color: lightcoral; /* menține violetul */
+    color: #fff;               /* text alb */
+    outline: none;             /* elimină chenarul albastru implicit */
+    border-color: #c084fc;     /* mov deschis, opțional pentru efect vizual */
+}
+
+form#login-form input:focus,
+form#login-form input:valid {
+    background-color: lightcoral; /* menține violetul */
+    color: #fff;               /* text alb */
+    outline: none;             /* elimină chenarul albastru implicit */
+    border-color: #c084fc;     /* mov deschis, opțional pentru efect vizual */
+}
+
+form#register-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #2196F3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+form#login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #2196F3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+form#register-form button:hover {
+    background-color: #0b7dda;
+}
+
+form#login-form button:hover {
+    background-color: #0b7dda;
+}
+
+/* Linkuri sub formular */
+form#register-form + p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+form#login-form + p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+form#register-form + p a {
+    color: #2196F3;
+    text-decoration: none;
+}
+
+
+form#login-form + p a {
+    color: #2196F3;
+    text-decoration: none;
+}
+
+form#register-form + p a:hover {
+    text-decoration: underline;
+}
+
+form#login-form + p a:hover {
+    text-decoration: underline;
+}
+
+
+/* Formularul de creare notiță */
+#create-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 320px;
+    max-width: 90vw;
+}
+
+/* Textarea */
+#create-input {
+    width: 100%;
+    resize: none;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #999;
+}
+
+/* Buton */
+#create-form button {
+    padding: 10px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#create-form button:hover {
+    background-color: #0b7dda;
+}
+
+/* Lista de notițe sub formular */
+#list {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+    color: white;
+    width: 800px;       /* aliniere cu formularul */
+    max-width: 90vw;
+}
