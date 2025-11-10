@@ -1,0 +1,112 @@
+<%- include('partials/header') %>
+
+<div class="form-container">
+  <h2 class="form-title"><%= title %></h2>
+
+  <form class="event-form" action="<%= isEdit ? '/events/' + event.id + '?_method=PUT' : '/events/add/new' %>" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="title">Titlu</label>
+      <input type="text" name="title" id="title" value="<%= event.title || '' %>" placeholder="Ex: Concert Rock în centrul orașului" required class="<%= errors?.title ? 'errorInput' : '' %>">
+      <% if (errors?.title) { %>
+        <p class="error"><%= errors.title %></p>
+      <% } %>
+    </div>
+
+
+    <div class="form-group">
+      <label for="description">Descriere</label>
+      <textarea name="description" id="description" rows="4" placeholder="Ex: Vino să te distrezi cu muzică live și atmosferă plăcută!" required class="<%= errors?.description ? 'errorInput' : '' %>"><%= event.description || '' %></textarea>
+      <% if (errors?.description) { %>
+        <p class="error"><%= errors.description %></p>
+      <% } %>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="date">Data</label>
+        <input type="date" name="date" id="date" value="<%= event.date || '' %>" required class="<%= errors?.date ? 'errorInput' : '' %>">
+      </div>
+      <div class="form-group">
+        <label for="time">Ora</label>
+        <input type="time" name="time" id="time" value="<%= event.time || '' %>" required class="<%= errors?.time ? 'errorInput' : '' %>">
+      </div>
+      <% if (errors?.time) { %>
+        <p class="error"><%= errors.time %></p>
+      <% } %>
+    </div>
+
+    <div class="form-group">
+      <label for="location">Locație</label>
+      <input type="text" name="location" id="location" value="<%= event.location || '' %>" placeholder="Ex: Sala Polivalentă, Chișinău" required class="<%= errors?.location ? 'errorInput' : '' %>">
+      <% if (errors?.location) { %>
+        <p class="error"><%= errors.location %></p>
+      <% } %>    
+    </div>
+
+    <div class="form-group">
+      <label for="category">Categorie</label>
+      <input type="text" name="category" id="category" value="<%= event.category || '' %>" placeholder="Ex: Muzică, Cultură, Sport" required class="<%= errors?.category ? 'errorInput' : '' %>">
+      <% if (errors?.category) { %>
+        <p class="error"><%= errors.category %></p>
+      <% } %>    
+    </div>
+
+    <div class="form-group">
+      <label for="organizer">Organizator</label>
+      <input type="text" id="organizer" name="organizer" placeholder="Ex: Primăria Chișinău / Event.md" value="<%= event.organizer || '' %>" required class="<%= errors?.organizer ? 'errorInput' : '' %>">
+      <% if (errors?.organizer) { %>
+        <p class="error"><%= errors.organizer %></p>
+      <% } %>    
+    </div>
+
+    <div class="form-group">
+      <label for="price">Preț</label>
+      <input type="text" id="price" name="price" placeholder="Ex: 150 MDL" required value="<%= event.price || '' %>" class="<%= errors?.price ? 'errorInput' : '' %>">
+      <% if (errors?.price) { %>
+        <p class="error"><%= errors.price %></p>
+      <% } %>
+    </div>
+    
+    <div class="form-group">
+      <label for="image">Imagine eveniment</label>
+
+      <div style="display: flex; gap: 1rem;">
+      <% if (event?.image) { %>
+        <div class="current-image">
+          <img src="/images/<%= event.image %>" alt="Imagine eveniment" class="preview-image">
+        </div>
+      <% } %>
+
+      <% if (event?.image) { %>
+        <input type="hidden" name="existingImage" value="<%= event.image %>">
+      <% } %>
+
+      <input type="file" name="image" id="image" accept="image/*" class="<%= errors?.image ? 'errorInput' : '' %>" style="width: 100%;">
+      </div>
+      
+      <% if (errors?.image) { %>
+        <p class="error"><%= errors.image %></p>
+      <% } %>
+      
+      <small class="form-text">Formate acceptate: JPG, PNG, GIF. Max 6MB.</small>
+    </div>
+
+
+    <%- include('partials/button', {
+      type: 'submit',
+      label: isEdit ? '💾 Salvează modificările' : 'Adaugă Eveniment',
+      icon: '➕',
+      extraClass: 'btn-primary'
+    }) %>
+  </form>
+
+  <%- include('partials/button', {
+    href: '/events',
+    label: 'Înapoi la listă',
+    icon: '← ',
+    extraClass: 'btn-secondary'
+  }) %>
+</div>
+
+
+<%- include('partials/footer') %>

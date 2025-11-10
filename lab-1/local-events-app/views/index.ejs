@@ -1,0 +1,15 @@
+<%- include('partials/header') %>
+
+<h2 class="section-title">Evenimente în apropiere</h2>
+
+<div class="event-list">
+  <% if (events.length === 0) { %>
+    <p>Momentan nu există evenimente disponibile.</p>
+  <% } else { %>
+    <% events.forEach(event => { %>
+      <%- include('partials/event-card', { event }) %>
+    <% }) %>
+  <% } %>
+</div>
+
+<%- include('partials/footer') %>
