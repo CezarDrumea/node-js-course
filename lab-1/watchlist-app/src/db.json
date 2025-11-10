@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "id": "1709768649318",
+      "title": "Example Movie 1",
+      "description": "A thrilling action film.",
+      "watched": true,
+      "rating": 4
+    },
+    {
+      "id": "1709768649319",
+      "title": "Example Series 2",
+      "description": "A complex sci-fi series.",
+      "watched": false,
+      "rating": 0
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    .container
+        h1 Edit Item: #{item.title}
+
+        if error
+            p.error #{error}
+
+        form(action=`/watchlist/edit/${item.id}`, method='POST', class='edit-form')
+            label(for='title') Title:
+            input(type='text', id='title', name='title', value=item.title, required)
+
+            label(for='description') Description:
+            textarea(id='description', name='description', required)= item.description
+
+            .edit-actions
+                button(type='submit') Save Changes
+                a(href='/watchlist', class='cancel-btn') Cancel

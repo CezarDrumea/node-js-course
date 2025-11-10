@@ -1,0 +1,205 @@
+:root {
+  --primary-color: #a10202;
+  --accent-color: #28a745;
+  --error-color: #dc3545;
+  --bg-dark: #121212;
+  --bg-card: #1f1f1f;
+  --text-light: #e0e0e0;
+  --text-secondary: #aaaaaa;
+  --border-radius: 8px;
+  --shadow-subtle: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #1f1f1f;
+  padding: 20px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+  color: var(--primary-color);
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.add-form, .edit-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-subtle);
+}
+
+.add-form input,
+.edit-form input,
+.edit-form textarea {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background-color: #2b2b2b;
+  color: var(--text-light);
+  transition: border-color 0.3s;
+}
+.add-form input:focus,
+.edit-form input:focus,
+.edit-form textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.edit-form label {
+  width: 100%;
+  margin-top: 5px;
+  font-weight: 600;
+  color: var(--text-light);
+}
+.edit-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+button, .cancel-btn, .edit-btn {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s, transform 0.1s;
+  text-decoration: none;
+  text-align: center;
+}
+
+button:hover, .cancel-btn:hover, .edit-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+.edit-actions {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+ul#watchlist {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+li.card {
+  background-color: var(--bg-card);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-subtle);
+  border-left: 5px solid var(--primary-color);
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+li.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+li.card.watched {
+  background-color: #242424;
+  border-left: 5px solid var(--accent-color);
+}
+
+li.card h2 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 1.5rem;
+  color: var(--text-light);
+}
+
+li.card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.toggle-form {
+  flex-grow: 1;
+}
+
+.toggle-btn {
+  background-color: var(--primary-color);
+  width: 100%;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+}
+
+.toggle-btn.unwatch {
+  background-color: #333;
+}
+
+.toggle-btn.watch {
+  background-color: var(--accent-color);
+}
+
+.delete-btn {
+  background-color: var(--error-color);
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  width: 40px;
+  flex-shrink: 0;
+}
+.delete-btn:hover {
+  background-color: #a71d2a;
+}
+.edit-btn {
+  background-color: #4a4a4a;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  flex-grow: 1;
+}
+.edit-btn:hover {
+  background-color: #333;
+}
+
+.error {
+  color: var(--error-color);
+  background-color: #3d1c1f;
+  padding: 10px;
+  border-radius: 4px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  border-left: 5px solid var(--error-color);
+}
+
+p:not(.error) {
+  color: var(--text-secondary);
+}

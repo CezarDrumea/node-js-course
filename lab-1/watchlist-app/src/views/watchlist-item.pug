@@ -1,0 +1,13 @@
+li(class=`card ${item.watched ? 'watched' : ''}`)
+    h2 #{item.title}
+    p #{item.description}
+
+    .button-group
+        a(href=`/watchlist/edit/${item.id}`, class='edit-btn') Edit
+
+        form(action=`/watchlist/toggle/${item.id}`, method='POST', class='toggle-form')
+            button.toggle-btn(type='submit', class=item.watched ? 'unwatch' : 'watch')
+                | #{item.watched ? 'Mark as Unwatched' : 'Mark as Watched'}
+
+        form(action=`/watchlist/delete/${item.id}`, method='POST')
+            button.delete-btn(type='submit') X
