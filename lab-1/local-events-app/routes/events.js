@@ -15,10 +15,8 @@ const router = express.Router();
 
 router.get("/", getEvents);
 
-// FORMULAR adăugare (GET)
 router.get("/add/new", showAddForm);
 
-// ADĂUGARE eveniment (POST) cu tratare erori multer
 router.post("/add/new", (req, res, next) => {
   upload.single("image")(req, res, function(err) {
     if (err) {
@@ -33,11 +31,9 @@ router.post("/add/new", (req, res, next) => {
   });
 }, addEvent);
 
-// FORMULAR editare (GET)
 router.get("/edit/:id", showEditForm);
 
-// SALVARE modificări (POST)
-router.put("/edit/:id", (req, res, next) => {
+router.put("/:id", (req, res, next) => {
   upload.single("image")(req, res, function(err) {
     if (err) {
       return res.status(400).render("eventForm", {
