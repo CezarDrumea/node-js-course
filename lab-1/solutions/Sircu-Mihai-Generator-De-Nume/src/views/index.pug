@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  if error
+    .alert= error
+
+  .grid
+    .panel
+      h2 Nume disponibile
+      p.small Lista de nume din care generatorul va alege aleatoriu.
+      ul#available-names.list
+        li.loading Se încarcă numele...
+
+    .panel
+      h2 Generator
+      p.small Apasă pe buton pentru a genera un nume complet din două nume aleatoare.
+      .generated-box
+        span.label Nume generat:
+        span#generated-name --
+      .actions
+        button#generate-btn Generează nume
+        button#save-btn Salvează numele
+        button#edit-generated-btn Modifică numele
+
+    .panel
+      h2 Nume salvate
+      p.small Numele salvate în baza de date.
+      ul#saved-names.list
+        li.loading Se încarcă numele salvate...
