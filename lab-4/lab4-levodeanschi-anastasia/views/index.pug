@@ -1,0 +1,28 @@
+doctype html
+html
+    head
+        meta(charset="UTF-8")
+        title Jurnal de recunoștințe
+        link(rel="stylesheet", href="/style.css")
+
+
+    body
+        pre= JSON.stringify(errors)
+        pre= JSON.stringify(user)
+        h1 Recunoștințele mele
+        if user
+            p Bun venit!
+            a(href="/logout") Ieșire
+            // Afișare erori chiar deasupra formularului
+            if errors && errors.length
+                each err in errors
+                    p.error-message= err.message
+        form#create-form.create(method="post" action="/notes")
+            textarea#create-input(name="text", rows=3, cols=50, placeholder="Adaugă ...", autocomplete="off") #{text || ''}
+            button(type="submit") Adaugă
+
+        ul#list.list
+
+
+        script(src="/app.js")
+

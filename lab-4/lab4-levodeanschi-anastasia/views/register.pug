@@ -1,0 +1,30 @@
+doctype html
+html
+    head
+        meta(charset="UTF-8")
+        title Înregistrare
+        link(rel="stylesheet" href="/style.css")
+
+    body
+        h1 Înregistrare
+
+        form#register-form.create(method="post" action="/register")
+            label(for="login") Login:
+            input#login(type="text" name="login" autocomplete="off" placeholder="Introdu login-ul ..." required)
+            if errors && errors.login
+                span(style="color:red; font-size:12px") #{errors.login}
+            br
+            br
+            label(for="password") Parola:
+            input#password(type="password" name="password" autocomplete="off" placeholder="Introdu parola ..." required)
+            if errors && errors.password
+                span(style="color:red; font-size:12px") #{errors.password}
+            br
+            br
+            button(type="submit") Înregistrare
+
+        p
+            |Ai deja un cont?
+            a(href="/auth")  Autentifică-te.
+
+        script(src="app.js")

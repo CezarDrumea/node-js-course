@@ -1,4 +1,4 @@
-import { UserModel } from '../models/user_model.js';
+import { UserModel } from '../../../lab-3/lab3-levodeanschi-anastasia-cookie/models/user_model.js';
 
 const users = new UserModel();
 
