@@ -1,4 +1,10 @@
 import * as model from '../model/model.js';
+import { z } from 'zod';
+
+// Zod schema for name validation
+const nameSchema = z.object({
+  name: z.string().trim().min(1, "'name' is required and must not be empty"),
+});
 
 export async function renderList(req, res, next) {
   try {
@@ -36,11 +42,13 @@ export async function getSaved(req, res, next) {
 export async function create(req, res, next) {
   console.log('Create request received');
   try {
-    const { name } = req.body;
-    if (!name || typeof name !== 'string' || name.trim().length < 1) {
-      return res.status(400).json({ error: "'name' is required" });
+    // Validates the request body against the nameSchema using Zod.
+    const validationResult = nameSchema.safeParse(req.body);
+    if (!validationResult.success) {
+      return res.status(400).json({ error: validationResult.error.errors[0].message });
     }
-    const saved_name = await model.save({ name: name.trim() });
+    const { name } = validationResult.data;
+    const saved_name = await model.save({ name });
     res.status(201).json(saved_name);
   } catch (err) {
     next(err);
@@ -51,8 +59,13 @@ export async function update(req, res, next) {
   console.log('Update request received');
   try {
     const { id } = req.params;
-    const patch = {};
-    if (typeof req.body.name === 'string') patch.name = req.body.name.trim();
+    // Validates the request body against the nameSchema using Zod.
+    const validationResult = nameSchema.safeParse(req.body);
+    if (!validationResult.success) {
+      return res.status(400).json({ error: validationResult.error.errors[0].message });
+    }
+    const { name } = validationResult.data;
+    const patch = { name };
     const updated = await model.update(id, patch);
     if (!updated) return res.status(404).json({ error: 'Name not found' });
     res.json(updated);

@@ -1,41 +1,58 @@
-import { readFileSync } from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import sequelize from '../src/config/database.js';
 import User from '../src/model/User.js';
-import Name from '../src/model/Name.js';
 import Session from '../src/model/Session.js';
+import Name from '../src/model/Name.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+async function migrate() {
+  try {
+    await sequelize.authenticate();
+    console.log('Connection to database has been established successfully.');
 
-async function migrateData() {
-  await sequelize.sync({ force: true });
+    // Synchronize models (create tables if they don't exist)
+    await User.sync();
+    await Session.sync();
+    await Name.sync();
 
-  const dbJsonPath = path.join(__dirname, '..', 'db.json');
-  const dbJson = JSON.parse(readFileSync(dbJsonPath, 'utf-8'));
+    console.log('All models were synchronized successfully.');
 
-  // Migrate users
-  for (const userData of dbJson.users) {
-    await User.create({ id: userData.id, username: userData.username, password: userData.password, name: userData.username });
+    // Seed initial data if needed
+    const existingNames = await Name.count();
+    if (existingNames === 0) {
+      const initialNames = [
+        { name: 'Andrei' },
+        { name: 'Popescu' },
+        { name: 'Maria' },
+        { name: 'Ionescu' },
+        { name: 'Ion' },
+        { name: 'Vasilescu' },
+        { name: 'Elena' },
+        { name: 'Georgescu' },
+        { name: 'Cristian' },
+        { name: 'Dumitrescu' },
+        { name: 'Ana' },
+        { name: 'Marinescu' },
+        { name: 'Mihai' },
+        { name: 'Radu' },
+        { name: 'Ioana' },
+        { name: 'Stanescu' },
+        { name: 'Gabriel' },
+        { name: 'Petrescu' },
+        { name: 'Alina' },
+        { name: 'Tudor' },
+      ];
+      await Name.bulkCreate(initialNames);
+      console.log('Initial names seeded.');
+    }
+
+    const existingUsers = await User.count();
+    if (existingUsers === 0) {
+      await User.create({ username: 'admin', password: '1234' });
+      console.log('Initial admin user created.');
+    }
+
+  } catch (error) {
+    console.error('Unable to connect to the database or synchronize models:', error);
   }
-
-  // Migrate names
-  for (const nameData of dbJson.names) {
-    await Name.create({ id: nameData.id, name: nameData.name });
-  }
-
-  // Migrate saved_names (assuming they also go into the Name table)
-  for (const savedNameData of dbJson.saved_names) {
-    await Name.findOrCreate({ where: { id: savedNameData.id }, defaults: { name: savedNameData.name } });
-  }
-
-  // Migrate sessions
-  for (const sessionData of dbJson.sessions) {
-    await Session.create({ id: sessionData.id, userId: sessionData.userId, createdAt: sessionData.createdAt });
-  }
-
-  console.log('Database synced and seeded with data from db.json!');
 }
 
-migrateData();
+migrate();

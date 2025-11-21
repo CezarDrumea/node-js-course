@@ -4,7 +4,8 @@ import User from './User.js';
 
 const Session = sequelize.define('Session', {
   id: {
-    type: DataTypes.STRING,
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
   },
   userId: {
@@ -18,6 +19,7 @@ const Session = sequelize.define('Session', {
   createdAt: {
     type: DataTypes.DATE,
     allowNull: false,
+    defaultValue: DataTypes.NOW,
   },
 });
 

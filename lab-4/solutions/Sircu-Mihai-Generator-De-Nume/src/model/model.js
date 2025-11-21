@@ -1,27 +1,38 @@
-import Name from './Name.js';
+import axios from 'axios';
+
+const api = axios.create({ baseURL: 'http://localhost:4000' });
 
 export async function names_list() {
-  const names = await Name.findAll();
-  return names.map((item) => item.name);
+  const { data } = await api.get('/names');
+  return Array.isArray(data) ? data.map((item) => item.name) : [];
 }
 
 export async function saved_list() {
-  const names = await Name.findAll();
-  return names;
+  const { data } = await api.get('/saved_names');
+  return data;
 }
 
 export async function save(name) {
-  const newName = await Name.create({ name });
-  return newName;
+  const { data } = await api.post('/saved_names', name);
+  return data;
 }
 
 export async function update(id, patch) {
-  const [updatedRows] = await Name.update(patch, { where: { id } });
-  if (updatedRows === 0) return null;
-  return Name.findByPk(id);
+  try {
+    const { data } = await api.patch(`/saved_names/${encodeURIComponent(id)}`, patch);
+    return data;
+  } catch (e) {
+    if (e.response && e.response.status === 404) return null;
+    throw e;
+  }
 }
 
 export async function remove(id) {
-  const deletedRows = await Name.destroy({ where: { id } });
-  return deletedRows > 0;
+  try {
+    await api.delete(`/saved_names/${encodeURIComponent(id)}`);
+    return true;
+  } catch (e) {
+    if (e.response && e.response.status === 404) return false;
+    throw e;
+  }
 }

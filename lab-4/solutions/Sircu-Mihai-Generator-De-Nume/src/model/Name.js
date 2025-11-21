@@ -10,6 +10,7 @@ const Name = sequelize.define('Name', {
   name: {
     type: DataTypes.STRING,
     allowNull: false,
+    unique: true,
   },
 });
 
