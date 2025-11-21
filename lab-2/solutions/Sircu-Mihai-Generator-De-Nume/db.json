@@ -1,0 +1,117 @@
+{
+  "names": [
+    {
+      "id": "1",
+      "name": "Andrei"
+    },
+    {
+      "id": "2",
+      "name": "Popescu"
+    },
+    {
+      "id": "3",
+      "name": "Maria"
+    },
+    {
+      "id": "4",
+      "name": "Ionescu"
+    },
+    {
+      "id": "5",
+      "name": "Ion"
+    },
+    {
+      "id": "6",
+      "name": "Vasilescu"
+    },
+    {
+      "id": "7",
+      "name": "Elena"
+    },
+    {
+      "id": "8",
+      "name": "Georgescu"
+    },
+    {
+      "id": "9",
+      "name": "Cristian"
+    },
+    {
+      "id": "10",
+      "name": "Dumitrescu"
+    },
+    {
+      "id": "11",
+      "name": "Ana"
+    },
+    {
+      "id": "12",
+      "name": "Marinescu"
+    },
+    {
+      "id": "13",
+      "name": "Mihai"
+    },
+    {
+      "id": "14",
+      "name": "Radu"
+    },
+    {
+      "id": "15",
+      "name": "Ioana"
+    },
+    {
+      "id": "16",
+      "name": "Stanescu"
+    },
+    {
+      "id": "17",
+      "name": "Gabriel"
+    },
+    {
+      "id": "18",
+      "name": "Petrescu"
+    },
+    {
+      "id": "19",
+      "name": "Alina"
+    },
+    {
+      "id": "20",
+      "name": "Tudor"
+    }
+  ],
+  "saved_names": [
+    {
+      "id": "0c0b",
+      "name": "Vasilescu Andrei"
+    },
+    {
+      "id": "aa34",
+      "name": "Elena Alina"
+    },
+    {
+      "id": "09d8",
+      "name": "Alina Tudor"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "1234"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "b033a64e-b64e-41c0-841d-eacc402c2a9f",
+      "userId": "1",
+      "createdAt": "2025-09-26T16:11:33.636Z"
+    },
+    {
+      "id": "7ef49430-cf9a-48be-99a4-4e259bcc4a18",
+      "userId": "1",
+      "createdAt": "2025-11-21T13:37:22.362Z"
+    }
+  ]
+}

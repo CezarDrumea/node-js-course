@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  if error
+    .alert= error
+
+  .grid
+    .panel
+      h2 Login cu Cookie
+      form(method="post", action="/login-cookie")
+        label(for="username-cookie") Username
+        input#username-cookie(type="text", name="username", required)
+        label(for="password-cookie") Parola
+        input#password-cookie(type="password", name="password", required)
+        button(type="submit") Login (Cookie)
+
+    .panel
+      h2 Login cu JWT
+      form(method="post", action="/login-jwt")
+        label(for="username-jwt") Username
+        input#username-jwt(type="text", name="username", required)
+        label(for="password-jwt") Parola
+        input#password-jwt(type="password", name="password", required)
+        button(type="submit") Login (JWT)
