@@ -3,12 +3,26 @@ import express from 'express';
 import noteRouter from './routes/jurnal_routes.js';
 import authRouter from './routes/auth_routes.js';
 import cookieParser from 'cookie-parser';
-
+import helmet from "helmet";
 import { ensureAuth } from './controllers/jurnal_controller.js';
 import {userModel} from "./models/user_model.js";
-
+import rateLimit from "express-rate-limit";
+import cors from "cors";
 const __dirname = path.resolve();
 const app = express();
+app.use(helmet());
+app.use(rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+    message: "Prea multe cereri! Încearcă mai târziu.",
+    standardHeaders: true,
+    legacyHeaders: false,
+}));
+// 2️⃣ Middleware global
+app.use(cors({
+    origin: "http://localhost:3000",
+    credentials: true
+}));
 
 // Middleware global
 app.use(express.static(path.join(__dirname, 'public')));
@@ -22,7 +36,6 @@ app.set('views', path.join(__dirname, 'views'));
 
 // --- Rutele publice (login / register) ---
 app.use('/', authRouter);
-
 
 
 // --- Redirect / dacă nu e logat ---
