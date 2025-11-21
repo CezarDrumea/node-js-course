@@ -1,0 +1,19 @@
+doctype html
+html
+    head
+        meta(charset="UTF-8")
+        title Jurnal de recunoștințe
+        link(rel="stylesheet", href="/style.css")
+
+
+    body
+        h1 Recunoștințele mele
+
+        form#create-form.create(method="post")
+            textarea#create-input(name="text", rows=3, cols=50, placeholder="Adaugă ...", autocomplete="off")
+            button(type="submit") Adaugă
+
+        ul#list.list
+
+        script(src="/app.js")
+
