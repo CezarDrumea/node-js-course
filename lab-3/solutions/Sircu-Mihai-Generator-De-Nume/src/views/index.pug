@@ -1,0 +1,58 @@
+extends layout
+
+block content
+  if error
+    .alert= error
+
+  .grid
+    .panel
+      h2 Autentificare
+      p.small Informații despre sesiunea Cookie și tokenul JWT.
+      if auth && auth.user
+        p Utilizator logat (cookie):
+          strong&attributes({ style: 'margin-left: 4px;' })= auth.user.username
+      else
+        p Nu există utilizator logat prin cookie.
+
+      if auth && auth.sessionId
+        p
+          span.label Session ID:
+          span&attributes({ style: 'margin-left: 4px; word-break: break-all;' })= auth.sessionId
+      else
+        p Session ID: --
+
+      if auth && auth.jwtToken
+        p
+          span.label JWT Token:
+          span&attributes({ style: 'margin-left: 4px; word-break: break-all;' })= auth.jwtToken
+      else
+        p JWT Token: --
+
+      .actions
+        form(method="post", action="/logout-cookie")
+          button(type="submit") Logout Cookie
+        form(method="post", action="/logout-jwt")
+          button(type="submit") Șterge JWT
+
+    .panel
+      h2 Nume disponibile
+      p.small Lista de nume din care generatorul va alege aleatoriu.
+      ul#available-names.list
+        li.loading Se încarcă numele...
+
+    .panel
+      h2 Generator
+      p.small Apasă pe buton pentru a genera un nume complet din două nume aleatoare.
+      .generated-box
+        span.label Nume generat:
+        span#generated-name --
+      .actions
+        button#generate-btn Generează nume
+        button#save-btn Salvează numele
+        button#edit-generated-btn Modifică numele
+
+    .panel
+      h2 Nume salvate
+      p.small Numele salvate în baza de date.
+      ul#saved-names.list
+        li.loading Se încarcă numele salvate...
