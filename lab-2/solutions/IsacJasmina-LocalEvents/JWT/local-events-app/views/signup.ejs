@@ -1,0 +1,43 @@
+<%- include('partials/header', { title: "Înregistrare" }) %>
+
+<div class="form-container">
+
+    <h2 class="form-title">Înregistrare</h2>
+    
+    <form action="/signup" method="POST" onsubmit="return validateForm()">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Username" value="<%= formData && formData.username ? formData.username : '' %>"  required class="<%= error ? 'errorInput' : '' %>">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Parola</label>
+            <input type="password" id="password" name="password" placeholder="Parola" value="<%= formData && formData.password ? formData.password : '' %>" required class="<%= error ? 'errorInput' : '' %>">
+        </div>
+
+        <div class="form-group">
+            <label for="passwordConfirm">Confirmă parola</label>
+            <input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="Confirmă parola" value="<%= formData && formData.passwordConfirm ? formData.passwordConfirm : '' %>" required class="<%= error ? 'errorInput' : '' %>">
+        </div>
+        
+      <% if (error) { %>
+          <p class="error" style="margin-bottom: 10px;"><%= error %></p>
+      <% } %>
+
+      <%- include('partials/button', {
+        type: 'submit',
+        label: 'Înregistrează-te',
+        icon: '📝',
+        extraClass: 'btn-primary'
+      }) %>
+      <%- include('partials/button', {
+        href: '/login',
+        label: 'Ai deja un cont? Autentificare',
+        icon: '← ',
+        extraClass: 'btn-secondary'
+      }) %>
+    </form>
+</div>
+
+<%- include('partials/footer') %>
+

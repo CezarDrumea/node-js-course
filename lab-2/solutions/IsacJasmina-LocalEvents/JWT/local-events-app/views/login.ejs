@@ -1,0 +1,38 @@
+<%- include('partials/header', { title: "Autentificare" }) %>
+
+<div class="form-container">
+
+    <h2 class="form-title">Autentificare</h2>
+    
+    <form action="/login" method="POST" onsubmit="return validateForm()">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Username" value ="<%= formData && formData.username ? formData.username : '' %>" required class="<%= error ? 'errorInput' : '' %>">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Parola</label>
+            <input type="password" id="password" name="password" placeholder="Parola" value ="<%= formData && formData.password ? formData.password : '' %>" required class="<%= error ? 'errorInput' : '' %>">
+        </div>
+        
+    <% if (error) { %>
+        <div class="error" style="margin-bottom: 10px;"><%= error %></div>
+    <% } %>
+
+    <%- include('partials/button', {
+        type: 'submit',
+        label: 'Login',
+        icon: '🔑',
+        extraClass: 'btn-primary'
+    }) %>
+    <%- include('partials/button', {
+        href: '/signup',
+        label: 'Nu ai încă un cont? Înregistrează-te',
+        icon: '← ',
+        extraClass: 'btn-secondary'
+    }) %>
+    </form>
+</div>
+
+<%- include('partials/footer') %>
+
