@@ -1,0 +1,74 @@
+<%- include('partials/header') %>
+
+<img class="event-image-large" src="/images/<%= event.image %>" alt="<%= event.title %>">
+
+  <% 
+    const dateObj = new Date(event.date);
+    const options = { day: '2-digit', month: 'short', year: 'numeric' };
+    const formattedDate = dateObj.toLocaleDateString('en-GB', options);
+
+    const formattedPostedDate = new Date(event.createdAt).toLocaleDateString('en-GB', options);
+  %>
+
+    <div class="event-layout">
+      <div class="e-details-wrapper">
+        <span class="event-category"><%= event.category.name %></span>
+        <h2 class="event-title"><%= event.title %></h2>
+        <p class="event-organizer"><b>Organizator:</b> <%= event.organizer %></p>
+        <p class="event-description text-large"><%= event.description %></p>
+        <small class="post-date">Data postare: <%= formattedPostedDate %></small>
+        
+        <div class="event-actions">
+          <% if (user && event.userId === user.id) { %>
+            <a href="edit/<%= event.id %>">
+              <%- include('partials/button', {
+                type: 'button',
+                label: 'Editeaza evenimentul',
+                icon: '🖍',
+                extraClass: 'btn-outline'
+              }) %>
+            </a>
+
+            <form action="/events/<%= event.id %>?_method=DELETE" method="POST" style="display:inline;"
+                  onsubmit="return confirm('Ești sigur că vrei să ștergi evenimentul?');">
+              <%- include('partials/button', {
+                type: 'submit',
+                label: 'Șterge evenimentul',
+                icon: '🗑',
+                extraClass: 'btn-outline destructive'
+              }) %>
+            </form>
+          <% } %>
+        </div>
+      </div>
+      
+      <div class="e-details-wrapper">
+        <div class="sidebar">
+          
+          <p class="event-datetime">
+            <i class="fa-solid fa-calendar-days"></i> <%= formattedDate %>
+          </p>
+          
+          <% if (event.time) { %>
+            <p class="event-datetime">
+              <i class="fa-solid fa-clock"></i> <%= event.time %>
+            </p>
+          <% } %>
+
+          <span class="event-price">
+            <i class="fa-solid fa-ticket"></i>
+            <%= event.price ? event.price : 'FREE' %>
+          </span>
+        </div>
+
+        <a href='https://www.eventbrite.co.uk/'>
+          <%- include('partials/button', {
+            type: 'button',
+            label: 'Cumpară bilete',
+            icon: '',
+            extraClass: 'btn-primary'
+          }) %>
+        </a>
+      </div>
+
+<%- include('partials/footer') %>
