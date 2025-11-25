@@ -1,0 +1,30 @@
+extends layout
+
+block content
+    if isNew
+        form(action="/journal/new" method="POST")
+            h2 Adauga inregistrare noua
+            input(type="text" name="title" placeholder="Titlu" required)
+            textarea(name="content" placeholder="Scrie aici gandurile tale..." rows="6" required)
+            button(type="submit") Salveaza
+            p(style="margin-top:10px")
+                a(href="/dashboard") Inapoi la jurnal
+    else if isEdit
+        form(action=`/journal/edit/${entry.id}` method="POST")
+            h2 Editeaza inregistrare
+            input(type="text" name="title" value=entry.title required)
+            textarea(name="content" rows="6" required)= entry.content
+            button(type="submit") Salveaza modificarile
+            p(style="margin-top:10px")
+                a(href="/dashboard") Inapoi la jurnal
+    else
+        .dashboard-container
+            h2 #{entry.title}
+            p(style="margin-top:10px; font-size:0.9rem") #{entry.date}
+            p(style="margin-top:20px; white-space:pre-wrap") #{entry.content}
+
+            div(style="display:flex; gap:10px; margin-top:20px")
+                a.add-btn(href=`/journal/edit/${entry.id}`) Editeaza
+                a.add-btn(href=`/journal/delete/${entry.id}` style="background:#e74c3c") Sterge
+
+            a.add-btn(href="/dashboard" style="margin-top:20px") Inapoi la jurnal

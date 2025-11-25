@@ -5,8 +5,14 @@ block content
         h1 Creeaza un cont nou
         if error
             p(style="color:red") #{error}
+
         input(type="text" name="username" placeholder="Username" required)
+
         input(type="password" name="password" placeholder="Parola" required)
+
+        input(type="password" name="confirmPassword" placeholder="Confirma parola" required)
+
         button(type="submit") Inregistreaza-te
+
         p Ai deja cont?
         a(href="/") Conecteaza-te

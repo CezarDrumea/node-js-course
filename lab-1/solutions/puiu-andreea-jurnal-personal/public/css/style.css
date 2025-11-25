@@ -32,8 +32,9 @@ main {
     flex: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;   /* era center */
     width: 100%;
+    padding: 40px 0;
 }
 
 /* Card central pentru login/register */
@@ -101,12 +102,14 @@ a:hover {
 .dashboard-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;          /* sa ocupe toata latimea containerului */
     background: white;
     padding: 40px;
     border-radius: 10px;
-    width: 600px;
+    width: 80%;                    /* mai lat, procentual */
+    max-width: 900px;              /* dar nu mai mare de 900px */
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    min-height: calc(100vh - 140px); /* ca sa “umple” aproape toata inaltimea paginii */
 }
 
 ul {
@@ -149,3 +152,35 @@ li a {
 .add-btn:hover {
     background: #4a54e1;
 }
+
+textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: 0.2s ease;
+    resize: vertical;
+    min-height: 120px;
+}
+
+textarea:focus {
+    border-color: #5c67f2;
+    outline: none;
+    box-shadow: 0 0 5px rgba(92,103,242,0.3);
+}
+.logout-btn {
+    margin-top: auto;         /* impinge butonul la baza dashboard-ului (flex column) */
+    align-self: flex-end;     /* il aliniaza in dreapta */
+    background: #e74c3c;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    background: #c0392b;
+}
+
+
