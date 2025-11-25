@@ -1,4 +1,6 @@
-<%- include('partials/header') %>
+<%- include('partials/header', { 
+  title: isEdit ? 'Editare eveniment' : 'Adaugare eveniment' 
+}) %>
 
 <div class="form-container">
   <h2 class="form-title"><%= title %></h2>

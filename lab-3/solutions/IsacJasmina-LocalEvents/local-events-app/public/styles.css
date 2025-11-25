@@ -300,7 +300,7 @@ form textarea:focus {
   margin-top: 4px;
 }
 
-form input.errorInput {
+.errorInput {
   border: 1px solid #e63946 !important;
   background-color: #fff5f5;
 }

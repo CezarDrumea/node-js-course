@@ -92,6 +92,7 @@ export const addEvent = async (req, res) => {
   try {
     const { title, description, date, time, location, categoryId, organizer, price } = req.body;
     const errors = {};
+    const categories = await prisma.category.findMany();
 
     if (!title?.trim()) errors.title = "Titlul este obligatoriu.";
     if (!description?.trim()) errors.description = "Descrierea este obligatorie.";
@@ -103,9 +104,7 @@ export const addEvent = async (req, res) => {
     if (!price?.trim()) errors.price = "Prețul este obligatoriu.";
 
     // Validare imagine (multer)
-    if (!req.file) {
-      errors.image = "Este necesară o imagine.";
-    } else {
+    if (req.file) {
       const allowed = ["image/jpeg", "image/png", "image/jpg"];
       if (!allowed.includes(req.file.mimetype)) {
         errors.image = "Imaginea trebuie să fie JPG, PNG sau WEBP.";
@@ -116,6 +115,9 @@ export const addEvent = async (req, res) => {
       return res.status(400).render("eventForm", {
         event: req.body,
         errors,
+        categories,
+        isEdit: false,
+        title: "Adaugare eveniment"
       });
     }
 
@@ -127,7 +129,7 @@ export const addEvent = async (req, res) => {
       location,
       organizer,
       price,
-      image: req.file ? req.file.filename : null,
+      image: req.file ? req.file.filename : 'default-event.jpeg',
       category: { connect: { id: categoryId } },
       user: req.user ? { connect: { id: req.user.id } } : undefined,
     };
@@ -145,6 +147,7 @@ export const editEvent = async (req, res) => {
   try {
     const { title, description, date, time, location, categoryId, organizer, price } = req.body;
     const errors = {};
+    const categories = await prisma.category.findMany();
 
     // Validări
     if (!title?.trim()) errors.title = "Titlul este obligatoriu.";
@@ -169,6 +172,8 @@ export const editEvent = async (req, res) => {
         event: req.body,
         errors,
         isEdit: true,
+        categories,
+        title: "Editează Eveniment"
       });
     }
 
