@@ -3,14 +3,14 @@
   "users": [
     {
       "id": "1",
-      "username": "student1",
-      "password": "1234",
-      "name": "Mihai"
+      "username": "user1",
+      "password": "pass1",
+      "name": "Alex"
     },
     {
       "id": "2",
-      "username": "student2",
-      "password": "pass",
+      "username": "user2",
+      "password": "pass2",
       "name": "Cezar"
     }
   ],
