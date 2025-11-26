@@ -3,7 +3,7 @@ const PasswordModel = require('../models/PasswordModel');
 class PasswordController {
   async index(req, res) {
     try {
-      const passwords = await PasswordModel.getAll();
+      const passwords = await PasswordModel.getAll(req.user.id);
 
       res.render('index', { 
         passwords,
@@ -28,7 +28,7 @@ class PasswordController {
         return res.status(400).json({ error: 'Missing required fields' });
       }
       
-      await PasswordModel.create(website, username, password, notes);
+      await PasswordModel.create(website, username, password, notes, req.user.id);
 
       res.redirect('/');
 
