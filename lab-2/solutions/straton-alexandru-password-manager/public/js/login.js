@@ -17,7 +17,7 @@ document.getElementById('jwtLoginForm').addEventListener('submit', async (e) => 
 
     if (res.ok && data.token) {
       localStorage.setItem(TOKEN_KEY, data.token);
-      messageDiv.innerHTML = '<div class="alert alert-success"><i class="bi bi-check-circle"></i> Login successful! Loading dashboard...</div>';
+      messageDiv.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert"><i class="bi bi-check-circle"></i> Login successful! Loading dashboard...<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>';
 
       try {
         // Load the protected dashboard using the JWT in the Authorization header
@@ -27,7 +27,7 @@ document.getElementById('jwtLoginForm').addEventListener('submit', async (e) => 
 
         if (!pageRes.ok) {
           const errText = await pageRes.text();
-          messageDiv.innerHTML = `<div class="alert alert-danger"><i class="bi bi-exclamation-circle"></i> Failed to load dashboard: ${pageRes.status} ${pageRes.statusText}</div>`;
+          messageDiv.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert"><i class="bi bi-exclamation-circle"></i> Failed to load dashboard: ${pageRes.status} ${pageRes.statusText}<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>`;
           console.error('Dashboard load error:', pageRes.status, errText);
           return;
         }
@@ -47,12 +47,12 @@ document.getElementById('jwtLoginForm').addEventListener('submit', async (e) => 
         document.body.appendChild(script);
       } catch (err) {
         console.error('Error loading dashboard with JWT:', err);
-        messageDiv.innerHTML = `<div class="alert alert-danger"><i class="bi bi-exclamation-circle"></i> Error loading dashboard: ${err.message}</div>`;
+        messageDiv.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert"><i class="bi bi-exclamation-circle"></i> Error loading dashboard: ${err.message}<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>`;
       }
     } else {
-      messageDiv.innerHTML = `<div class="alert alert-danger"><i class="bi bi-exclamation-circle"></i> ${data.message || 'Login failed'}</div>`;
+      messageDiv.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert"><i class="bi bi-exclamation-circle"></i> ${data.message || 'Login failed'}<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>`;
     }
   } catch (error) {
-    messageDiv.innerHTML = `<div class="alert alert-danger"><i class="bi bi-exclamation-circle"></i> Error: ${error.message}</div>`;
+    messageDiv.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert"><i class="bi bi-exclamation-circle"></i> Error: ${error.message}<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>`;
   }
 });
