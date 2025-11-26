@@ -17,10 +17,38 @@ document.getElementById('jwtLoginForm').addEventListener('submit', async (e) => 
 
     if (res.ok && data.token) {
       localStorage.setItem(TOKEN_KEY, data.token);
-      messageDiv.innerHTML = '<div class="alert alert-success"><i class="bi bi-check-circle"></i> Login successful! Redirecting...</div>';
-      setTimeout(() => {
-        window.location.href = '/';
-      }, 1500);
+      messageDiv.innerHTML = '<div class="alert alert-success"><i class="bi bi-check-circle"></i> Login successful! Loading dashboard...</div>';
+
+      try {
+        // Load the protected dashboard using the JWT in the Authorization header
+        const pageRes = await fetch('/', {
+          headers: { 'Authorization': `Bearer ${data.token}` }
+        });
+
+        if (!pageRes.ok) {
+          const errText = await pageRes.text();
+          messageDiv.innerHTML = `<div class="alert alert-danger"><i class="bi bi-exclamation-circle"></i> Failed to load dashboard: ${pageRes.status} ${pageRes.statusText}</div>`;
+          console.error('Dashboard load error:', pageRes.status, errText);
+          return;
+        }
+
+        const html = await pageRes.text();
+        // Replace current document with the dashboard HTML
+        document.open();
+        document.write(html);
+        document.close();
+        // Update URL to '/'
+        window.history.pushState(null, '', '/');
+
+        // Ensure dashboard script is loaded and initialized
+        const script = document.createElement('script');
+        script.src = '/js/dashboard.js';
+        script.defer = true;
+        document.body.appendChild(script);
+      } catch (err) {
+        console.error('Error loading dashboard with JWT:', err);
+        messageDiv.innerHTML = `<div class="alert alert-danger"><i class="bi bi-exclamation-circle"></i> Error loading dashboard: ${err.message}</div>`;
+      }
     } else {
       messageDiv.innerHTML = `<div class="alert alert-danger"><i class="bi bi-exclamation-circle"></i> ${data.message || 'Login failed'}</div>`;
     }
