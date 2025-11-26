@@ -1,0 +1,18 @@
+{
+  "passwords": [],
+  "users": [
+    {
+      "id": "1",
+      "username": "student1",
+      "password": "1234",
+      "name": "Mihai"
+    },
+    {
+      "id": "2",
+      "username": "student2",
+      "password": "pass",
+      "name": "Cezar"
+    }
+  ],
+  "sessions": []
+}
