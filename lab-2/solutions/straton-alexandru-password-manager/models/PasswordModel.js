@@ -64,9 +64,16 @@ class PasswordModel {
     return decrypted;
   }
 
-  async getAll() {
+  async getAll(userId = null) {
     const res = await axios.get(`${this.apiBaseUrl}/passwords`);
-    return res.data || [];
+    let passwords = res.data || [];
+    
+    // Filter by userId if provided
+    if (userId) {
+      passwords = passwords.filter(p => p.userId === userId || p.userId === null);
+    }
+    
+    return passwords;
   }
 
   async getById(id) {
@@ -81,7 +88,7 @@ class PasswordModel {
     }
   }
 
-  async create(website, username, password, notes) {
+  async create(website, username, password, notes, userId) {
     const encryptedPassword = this.encrypt(password);
 
     const newEntry = {
@@ -90,6 +97,7 @@ class PasswordModel {
       username,
       password: encryptedPassword,
       notes: notes || '',
+      userId: userId || null,
       createdAt: new Date().toISOString()
     };
 
