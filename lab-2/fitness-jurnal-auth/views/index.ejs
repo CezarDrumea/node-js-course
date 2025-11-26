@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Fitness Journal</title>
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, private" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 2rem auto; }
+        header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
+        nav a, nav form button { margin-left: 0.5rem; }
+        ul { padding-left: 1rem; }
+        li { margin-bottom: 0.75rem; }
+        .workout-line { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+        .workout-notes { margin: 0; display: inline; }
+        .inline-form { display: inline; margin-left: 0.5rem; }
+    </style>
+</head>
+<body>
+<header>
+    <div><strong>Hello, <%= user.name %></strong></div>
+    <nav>
+        <a href="/add">Add workout</a>
+        <form class="inline-form" method="POST" action="/logout">
+            <button type="submit">Logout</button>
+        </form>
+    </nav>
+</header>
+
+<h2>Your workouts</h2>
+
+<% if (!workouts || workouts.length === 0) { %>
+    <p>No workouts yet. <a href="/add">Add one</a>.</p>
+<% } else { %>
+    <ul>
+        <% workouts.forEach(function(w) { %>
+            <li>
+                <div class="workout-line">
+                    <strong><%= w.date %></strong> — <%= w.type %> (<%= w.duration %> min, <%= w.calories %> kcal)
+                    <p class="workout-notes"><%= w.notes %></p>
+                    <form class="inline-form" method="POST" action="/delete/<%= w.id %>">
+                        <button type="submit">Delete</button>
+                    </form>
+                    <a href="/details/<%= w.id %>">Details</a>
+                </div>
+            </li>
+        <% }); %>
+    </ul>
+<% } %>
+</body>
+</html>

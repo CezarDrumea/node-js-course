@@ -1,0 +1,60 @@
+{
+  "workouts": [
+    {
+      "id": 1,
+      "date": "2025-11-25",
+      "type": "Alergare",
+      "duration": "45",
+      "calories": "350",
+      "notes": "Traseu prin parc, vreme răcoroasă"
+    },
+    {
+      "id": 2,
+      "date": "2025-11-24",
+      "type": "Antrenament cu greutăți",
+      "duration": "60",
+      "calories": "480",
+      "notes": "Focus pe piept și umeri, sală EnergoGym"
+    },
+    {
+      "id": 3,
+      "date": "2025-11-23",
+      "type": "Yoga",
+      "duration": "30",
+      "calories": "150",
+      "notes": "Exerciții de relaxare și stretching dimineața"
+    },
+    {
+      "id": 4,
+      "date": "2025-11-22",
+      "type": "Ciclism",
+      "duration": "90",
+      "calories": "600",
+      "notes": "Traseu Chișinău–Vadul lui Vodă, ritm moderat"
+    },
+    {
+      "id": 5,
+      "date": "2025-11-21",
+      "type": "Înot",
+      "duration": "50",
+      "calories": "420",
+      "notes": "Piscina USM, 40 de ture, antrenament cardio excelent"
+    },
+    {
+      "id": 1764054834885,
+      "date": "2025-11-27",
+      "type": "qwerty test",
+      "duration": "90",
+      "calories": "600",
+      "notes": "qwertyuiop lkjhgfds ,mnbvcxcvbn"
+    },
+    {
+      "id": 1764089766828,
+      "date": "2025-11-21",
+      "type": "wertyuik",
+      "duration": "23",
+      "calories": "234",
+      "notes": "qwhjhgfds"
+    }
+  ]
+}

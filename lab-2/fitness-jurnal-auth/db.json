@@ -1,0 +1,43 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "student1",
+      "password": "1234",
+      "name": "Mihai"
+    },
+    {
+      "id": "2",
+      "username": "student2",
+      "password": "pass",
+      "name": "Cezar"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "6feb9e6d-cff2-409d-9e6d-e792e563f7d7",
+      "userId": "1",
+      "createdAt": "2025-11-25T16:59:20.238Z"
+    }
+  ],
+  "workouts": [
+    {
+      "id": 1764059934133,
+      "userId": "1",
+      "date": "2025-11-28",
+      "type": "run",
+      "duration": "70",
+      "calories": "560",
+      "notes": "bvndmkslak.dsm vimcx;wldjfnb c "
+    },
+    {
+      "id": 1764089981965,
+      "userId": "1",
+      "date": "2025-11-15",
+      "type": "qwergsx",
+      "duration": "23",
+      "calories": "34",
+      "notes": "qwertyuhgfds"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Add Workout</title>
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, private" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<h1>Add Workout</h1>
+
+<form method="POST" action="/add">
+    <input type="date" name="date" required />
+    <input name="type" placeholder="Type (e.g. Run)" required />
+    <input name="duration" placeholder="Duration (minutes)" type="number" min="0" required />
+    <input name="calories" placeholder="Calories" type="number" min="0" required />
+    <textarea name="notes" placeholder="Notes"></textarea>
+    <button type="submit">Save</button>
+</form>
+
+<a href="/">← Back</a>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jurnal de Fitness</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>🏋️‍♀️ Jurnal de Fitness</h1>
+<a href="/add">Adaugă antrenament</a>
+<ul>
+    <% workouts.forEach(workout => { %>
+        <li>
+            <strong><%= workout.date %></strong> -
+            <%= workout.type %> ( <%= workout.duration %> min, <%= workout.calories %> kcal )
+            <p><%= workout.notes %></p>
+        </li>
+    <% }) %>
+</ul>
+</body>
+</html>

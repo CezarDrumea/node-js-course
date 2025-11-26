@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, private" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<h1>Login</h1>
+<% if (typeof msg !== 'undefined' && msg) { %><div class="msg"><%= msg %></div><% } %>
+<form method="POST" action="/auth/login" autocomplete="off">
+    <input name="username" placeholder="username" required />
+    <input name="password" placeholder="password" type="password" required autocomplete="new-password" />
+    <button type="submit">Login</button>
+</form>
+</body>
+</html>

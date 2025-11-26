@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Fitness Journal</title>
+    <link rel="stylesheet" href="/css/style.css" /></head>
+<body>
+<h1>Welcome, <%= user.username %>!</h1>
+
+<form method="POST" action="/auth/logout" style="display:inline;">
+    <button type="submit">Logout</button>
+</form>
+
+<h2>Your Workouts</h2>
+<% if (workouts.length === 0) { %>
+    <p>No workouts yet. Add one below!</p>
+<% } else { %>
+    <ul>
+        <% workouts.forEach(w => { %>
+            <li>
+                <strong><%= w.date %></strong> — <%= w.type %>
+                (<%= w.duration %> min, <%= w.calories %> kcal)
+                <form method="POST" action="/delete/<%= w.id %>" style="display:inline">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+<% } %>
+
+<h3>Add a new workout</h3>
+<form method="POST" action="/add">
+    <input name="date" type="date" required />
+    <input name="type" placeholder="Type" required />
+    <input name="duration" type="number" placeholder="Minutes" required />
+    <input name="calories" type="number" placeholder="Calories" required />
+    <input name="notes" placeholder="Notes" />
+    <button type="submit">Add</button>
+</form>
+</body>
+</html>

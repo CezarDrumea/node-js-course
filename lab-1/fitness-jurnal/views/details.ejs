@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalii antrenament</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Detalii antrenament</h1>
+<div class="details">
+    <p><strong>Data:</strong> <%= workout.date %></p>
+    <p><strong>Tip:</strong> <%= workout.type %></p>
+    <p><strong>Durată:</strong> <%= workout.duration %> minute</p>
+    <p><strong>Calorii:</strong> <%= workout.calories %> kcal</p>
+    <p><strong>Note:</strong> <%= workout.notes %></p>
+</div>
+
+<a href="/">← Înapoi la listă</a>
+</body>
+</html>

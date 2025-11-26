@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adaugă Antrenament</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Adaugă un nou antrenament</h1>
+<form method="POST" action="/add">
+    <label>Data:</label>
+    <input type="date" name="date" required><br>
+
+    <label>Tip antrenament:</label>
+    <input type="text" name="type" required><br>
+
+    <label>Durată (minute):</label>
+    <input type="number" name="duration" required><br>
+
+    <label>Calorii arse:</label>
+    <input type="number" name="calories" required><br>
+
+    <label>Note:</label>
+    <textarea name="notes"></textarea><br>
+
+    <button type="submit">Salvează</button>
+</form>
+<a href="/">Înapoi</a>
+</body>
+</html>

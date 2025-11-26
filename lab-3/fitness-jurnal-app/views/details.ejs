@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Workout Details</title>
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, private" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 700px; margin: 2rem auto; }
+        dt { font-weight: bold; }
+        dd { margin: 0 0 0.5rem 0; }
+        a { display: inline-block; margin-top: 1rem; }
+    </style>
+</head>
+<body>
+<h1>Workout Details</h1>
+
+<dl>
+    <dt>Date</dt><dd><%= workout.date %></dd>
+    <dt>Type</dt><dd><%= workout.type %></dd>
+    <dt>Duration</dt><dd><%= workout.duration %> min</dd>
+    <dt>Calories</dt><dd><%= workout.calories %> kcal</dd>
+    <dt>Notes</dt><dd><%= workout.notes %></dd>
+</dl>
+
+<a href="/">← Back</a>
+</body>
+</html>
