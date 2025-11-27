@@ -122,6 +122,9 @@
           </div>
         <% } %>
 
+        <!-- Cookie Message Alert -->
+        <div id="cookieMessage"></div>
+
         <!-- JWT Message Alert (top, dismissible) -->
         <div id="jwtMessage"></div>
 
@@ -141,14 +144,14 @@
         <div class="tab-content">
           <!-- Cookie Authentication -->
           <div class="tab-pane fade show active" id="cookie-pane" role="tabpanel">
-            <form method="POST" action="/login-cookie">
+            <form id="cookieLoginForm">
               <div class="form-group">
                 <label for="cookie-username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="cookie-username" name="username" placeholder="Enter your username" required>
+                <input type="text" class="form-control" id="cookie-username" placeholder="Enter your username" required>
               </div>
               <div class="form-group">
                 <label for="cookie-password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="cookie-password" name="password" placeholder="Enter your password" required>
+                <input type="password" class="form-control" id="cookie-password" placeholder="Enter your password" required>
               </div>
               <button type="submit" class="btn btn-login btn-primary w-100">
                 <i class="bi bi-box-arrow-in-right"></i> Login with Cookie
