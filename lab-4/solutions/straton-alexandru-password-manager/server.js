@@ -3,6 +3,9 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import { fileURLToPath } from 'url';
 import 'dotenv/config';
+import helmet from 'helmet';
+import cors from 'cors';
+import rateLimit from 'express-rate-limit';
 
 import { requireAuth } from './middleware/auth.js';
 import authRoutes from './routes/authRoutes.js';
@@ -15,8 +18,19 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+app.use(helmet());
+app.use(cors());
+app.use(limiter);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
