@@ -21,12 +21,12 @@ async function loginWithCookie(req, res) {
     password = (password || '').trim();
 
     if (!isNonEmpty(username) || !isNonEmpty(password)) {
-      return res.redirect('/login?error=Username and password are required');
+      return res.status(400).json({ message: 'Username and password are required' });
     }
 
     const user = await authService.findUserExact(username, password);
     if (!user) {
-      return res.redirect('/login?error=Invalid credentials');
+      return res.status(401).json({ message: 'Invalid credentials' });
     }
 
     const sessionId = await authService.createSession(user.id);
@@ -37,10 +37,10 @@ async function loginWithCookie(req, res) {
     };
 
     res.cookie('sessionId', sessionId, cookieOptions);
-    res.redirect('/');
+    res.json({ message: 'Logged in with cookie!' });
   } catch (error) {
     console.error('Cookie login error:', error);
-    res.redirect('/login?error=Login error');
+    res.status(500).json({ message: 'Login error' });
   }
 }
 
