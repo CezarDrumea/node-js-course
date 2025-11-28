@@ -1,0 +1,30 @@
+{
+  "name": "straton-alexandru-password-manager",
+  "version": "1.0.0",
+  "description": "**PASSWORD MANAGER**",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --watch server.js",
+    "dev": "nodemon server.js",
+    "db:push": "prisma db push",
+    "db:seed": "node scripts/seed.js",
+    "db:reset": "prisma migrate reset --force"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "ejs": "^3.1.9",
+    "cookie-parser": "^1.4.6",
+    "jsonwebtoken": "^9.0.2",
+    "@prisma/client": "^5.8.0",
+    "dotenv": "^16.4.5",
+    "helmet": "^7.0.0",
+    "cors": "^2.8.5",
+    "express-rate-limit": "^7.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "prisma": "^5.8.0"
+  }
+}
