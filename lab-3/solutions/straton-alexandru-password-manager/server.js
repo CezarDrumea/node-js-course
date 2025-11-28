@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 app.use('/', authRoutes);
-app.use('/', requireAuth, passwordRoutes);
+app.use('/', passwordRoutes);
 
 app.use((err, req, res, next) => {
   console.error('Error:', err);

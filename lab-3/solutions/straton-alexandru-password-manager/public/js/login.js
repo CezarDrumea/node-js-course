@@ -1,5 +1,25 @@
 const TOKEN_KEY = 'pm_jwt_token';
 
+// Setup JWT fetch interceptor immediately
+(function setupJwtInterceptor() {
+  const originalFetch = window.fetch;
+  window.fetch = function(...args) {
+    const token = localStorage.getItem(TOKEN_KEY);
+    console.log('[Interceptor] Fetch to:', args[0], 'Token:', token ? 'YES' : 'NO');
+    if (token) {
+      if (!args[1]) args[1] = {};
+      if (!args[1].headers) args[1].headers = {};
+      if (!args[1].headers['Authorization']) {
+        args[1].headers['Authorization'] = `Bearer ${token}`;
+        console.log('[Interceptor] Added Authorization header');
+      } else {
+        console.log('[Interceptor] Authorization header already exists');
+      }
+    }
+    return originalFetch.apply(this, args);
+  };
+})();
+
 document.getElementById('jwtLoginForm').addEventListener('submit', async (e) => {
   e.preventDefault();
   const username = document.getElementById('jwt-username').value.trim();
@@ -19,36 +39,10 @@ document.getElementById('jwtLoginForm').addEventListener('submit', async (e) => 
       localStorage.setItem(TOKEN_KEY, data.token);
       messageDiv.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert"><i class="bi bi-check-circle"></i> Login successful! Loading dashboard...<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>';
 
-      try {
-        // Load the protected dashboard using the JWT in the Authorization header
-        const pageRes = await fetch('/', {
-          headers: { 'Authorization': `Bearer ${data.token}` }
-        });
-
-        if (!pageRes.ok) {
-          const errText = await pageRes.text();
-          messageDiv.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert"><i class="bi bi-exclamation-circle"></i> Failed to load dashboard: ${pageRes.status} ${pageRes.statusText}<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>`;
-          console.error('Dashboard load error:', pageRes.status, errText);
-          return;
-        }
-
-        const html = await pageRes.text();
-        // Replace current document with the dashboard HTML
-        document.open();
-        document.write(html);
-        document.close();
-        // Update URL to '/'
-        window.history.pushState(null, '', '/');
-
-        // Ensure dashboard script is loaded and initialized
-        const script = document.createElement('script');
-        script.src = '/js/dashboard.js';
-        script.defer = true;
-        document.body.appendChild(script);
-      } catch (err) {
-        console.error('Error loading dashboard with JWT:', err);
-        messageDiv.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert"><i class="bi bi-exclamation-circle"></i> Error loading dashboard: ${err.message}<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>`;
-      }
+      // Navigate to dashboard; data will be loaded via JWT-protected API
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 500);
     } else {
       messageDiv.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert"><i class="bi bi-exclamation-circle"></i> ${data.message || 'Login failed'}<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>`;
     }

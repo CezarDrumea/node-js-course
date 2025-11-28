@@ -29,8 +29,8 @@ app.use(express.static('public'));
 // Public auth routes (login, logout)
 app.use('/', authRoutes);
 
-// Protected password manager routes
-app.use('/', requireAuth, passwordRoutes);
+// Password manager routes (auth applied per-route)
+app.use('/', passwordRoutes);
 
 // ============================================
 // Error Handling

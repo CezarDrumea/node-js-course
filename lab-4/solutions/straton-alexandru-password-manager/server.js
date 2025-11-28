@@ -46,13 +46,14 @@ app.use(globalLimiter);
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(cookieParser());
+
 app.use(express.static('public'));
 
 // Input sanitization
 app.use(sanitizeInput);
 
 app.use('/', authLimiter, authRoutes);
-app.use('/', requireAuth, passwordLimiter, passwordRoutes);
+app.use('/', passwordLimiter, passwordRoutes);
 
 app.use((err, req, res, next) => {
   console.error('Error:', err);

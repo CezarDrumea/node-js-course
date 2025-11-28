@@ -54,9 +54,29 @@ export function requireJwt(req, res, next) {
 
 /**
  * Middleware: Require authentication (cookie or JWT)
+ * Prioritizes JWT if Authorization header is present
  */
 export async function requireAuth(req, res, next) {
-  // Try cookie first
+  const auth = req.headers.authorization || '';
+  
+  // If Authorization header is present, use JWT only (no cookie fallback)
+  if (auth.startsWith('Bearer ')) {
+    const token = auth.slice(7).trim();
+    const jwtPattern = /^[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_.+/=]*$/;
+    if (jwtPattern.test(token) && token !== 'null' && token !== 'undefined') {
+      try {
+        const decoded = jwt.verify(token, SECRET);
+        req.user = decoded;
+        req.authType = 'jwt';
+        return next();
+      } catch (error) {
+        return res.status(401).json({ message: 'Invalid or expired token' });
+      }
+    }
+    return res.status(401).json({ message: 'Invalid token format' });
+  }
+
+  // No Authorization header, try cookie
   const sessionId = req.cookies?.sessionId;
   if (isNonEmpty(sessionId)) {
     try {
@@ -68,24 +88,7 @@ export async function requireAuth(req, res, next) {
         return next();
       }
     } catch (error) {
-      // Continue to JWT check
-    }
-  }
-
-  // Try JWT
-  const auth = req.headers.authorization || '';
-  if (auth.startsWith('Bearer ')) {
-    const token = auth.slice(7).trim();
-    const jwtPattern = /^[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_.+/=]*$/;
-    if (jwtPattern.test(token) && token !== 'null' && token !== 'undefined') {
-      try {
-        const decoded = jwt.verify(token, SECRET);
-        req.user = decoded;
-        req.authType = 'jwt';
-        return next();
-      } catch (error) {
-        // Continue to error
-      }
+      return res.status(401).json({ message: 'Invalid session' });
     }
   }
 

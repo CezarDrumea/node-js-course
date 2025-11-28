@@ -1,6 +1,39 @@
 import PasswordModel from '../models/PasswordModel.js';
 
 class PasswordController {
+  async shell(req, res) {
+    try {
+      res.render('index', {
+        passwords: [],
+        masterKey: '',
+        user: { name: '' },
+        authType: null,
+      });
+    } catch (error) {
+      console.error('Shell error:', error);
+      const msg = error && (error.message || error.code || error.toString());
+      res.status(500).send(`Internal error: ${msg}`);
+    }
+  }
+
+  async dashboardData(req, res) {
+    try {
+      const passwords = await PasswordModel.getAll(req.user.id);
+      const masterKey = await PasswordModel.getMasterKey();
+
+      res.json({
+        passwords,
+        masterKey,
+        user: req.user,
+        authType: req.authType,
+      });
+    } catch (error) {
+      console.error('Dashboard data error:', error);
+      const msg = error && (error.message || error.code || error.toString());
+      res.status(500).json({ message: msg });
+    }
+  }
+
   async index(req, res) {
     try {
       const passwords = await PasswordModel.getAll(req.user.id);

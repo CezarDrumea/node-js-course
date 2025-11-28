@@ -2,6 +2,7 @@ import express from 'express';
 import { z } from 'zod';
 import passwordController from '../controllers/passwordController.js';
 import { validateBody, validateParams } from '../middleware/validation.js';
+import { requireAuth } from '../middleware/auth.js';
 
 const router = express.Router();
 
@@ -48,10 +49,16 @@ const updatePasswordSchema = z.object({
     .optional(),
 });
 
-router.get('/', passwordController.index);
-router.post('/add', validateBody(createPasswordSchema), passwordController.create);
-router.post('/reveal/:id', validateParams(idParamSchema), passwordController.reveal);
-router.put('/update/:id', validateParams(idParamSchema), validateBody(updatePasswordSchema), passwordController.update);
-router.delete('/delete/:id', validateParams(idParamSchema), passwordController.delete);
+// Public dashboard shell (HTML only, data loaded via auth-protected API)
+router.get('/', passwordController.shell);
+
+// Auth-protected dashboard data API (supports cookie or JWT via requireAuth)
+router.get('/api/dashboard', requireAuth, passwordController.dashboardData);
+
+// Protected routes (require auth)
+router.post('/add', requireAuth, validateBody(createPasswordSchema), passwordController.create);
+router.post('/reveal/:id', requireAuth, validateParams(idParamSchema), passwordController.reveal);
+router.put('/update/:id', requireAuth, validateParams(idParamSchema), validateBody(updatePasswordSchema), passwordController.update);
+router.delete('/delete/:id', requireAuth, validateParams(idParamSchema), passwordController.delete);
 
 export default router;
