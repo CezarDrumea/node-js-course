@@ -96,19 +96,6 @@
       "organizer": "GoCon Moldova",
       "price": "80 MDL",
       "image": "1762700728608-411786387.png"
-    },
-    {
-      "title": "dsgfbdfcvn edited ",
-      "description": "xfcbxcf edit",
-      "date": "2025-11-19",
-      "time": "14:00",
-      "location": "Strada Pietonala",
-      "category": "Muzica",
-      "organizer": "GoCon Moldova",
-      "price": "80 MDL",
-      "existingImage": "1762883003819-231897505.png",
-      "image": "1762883003819-231897505.png",
-      "id": "4baa"
     }
   ],
   "users": [
@@ -131,6 +118,14 @@
         "username": "admin"
       },
       "createdAt": 1763938375129
+    },
+    {
+      "id": "b9632f02-3cdd-468a-8266-8837f5835b38",
+      "user": {
+        "id": "1fcc",
+        "username": "user1"
+      },
+      "createdAt": 1764089198256
     }
   ]
 }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title || "Evenimente Locale" %></title>
+  <link rel="icon" href="/event.png" type="image/png">
+  <link rel="stylesheet" href="/styles.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+<body>
+  <header class="header">
+    <a href="/" class="logo">
+      <img src="/event.png" alt="Evenimente Locale" />
+      <h1>EV</h1>
+    </a>
+    <nav class="nav">
+      <a class="nav-item" href="/">Evenimente</a>
+      <a class="nav-item" href="/events/add/new">Adaugă eveniment</a>
+
+      <div class="profile-wrapper">
+        <% if (user) { %>
+          <a class="nav-item" href="/profile">👤 <%= user.username %></a>
+          <form action="/logout" method="POST" style="display:inline;" 
+                onsubmit="return confirm('Sigur vrei să te deloghezi?');">
+            <%- include('button', {
+                type: 'submit',
+                label: 'Logout',
+                icon: '',
+                extraClass: 'btn-primary btn-logout'
+            }) %>
+          </form>
+        <% } else { %>
+          <a href="/login">
+            <%- include('button', {
+                type: 'button',
+                label: 'Login',
+                icon: '',
+                extraClass: 'btn-login'
+            }) %>
+          </a>
+          <a href="/signup">
+            <%- include('button', {
+                type: 'button',
+                label: 'Sign Up',
+                icon: '',
+                extraClass: 'btn-login'
+            }) %>
+          </a>
+        <% } %>
+      </div>
+    </nav>
+  </header>
+
+  <main>

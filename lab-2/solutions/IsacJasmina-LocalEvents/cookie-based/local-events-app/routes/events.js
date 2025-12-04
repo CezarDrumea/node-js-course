@@ -48,7 +48,7 @@ router.put("/:id", requireAuth, (req, res, next) => {
   });
 }, editEvent);
 
-router.get("/:id", requireAuth, getEvent);
+router.get("/:id", getEvent);
 
 router.delete("/:id", requireAuth, deleteEvent);
 
