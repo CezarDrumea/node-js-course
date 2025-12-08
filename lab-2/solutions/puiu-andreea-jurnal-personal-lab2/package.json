@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lab1": "node app.js"
+    "lab2:jwt": "node app_jwt.js",
+    "lab2:cookie": "node app_cookie.js"
   },
   "keywords": [],
   "author": "",
@@ -12,8 +13,10 @@
   "type": "commonjs",
   "dependencies": {
     "body-parser": "^2.2.0",
+    "cookie-parser": "^1.4.7",
     "express": "^5.1.0",
     "express-session": "^1.18.2",
+    "jsonwebtoken": "^9.0.2",
     "pug": "^3.0.3"
   }
 }

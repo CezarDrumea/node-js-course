@@ -1,0 +1,24 @@
+{
+  "name": "puiu-andreea-jurnal-personal-lab4",
+  "version": "1.0.0",
+  "description": "Jurnal personal - Lab 4 (Validari + Helmet + Cors)",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "helmet": "^8.0.0",
+    "pug": "^3.0.3",
+    "sequelize": "^6.37.1",
+    "sqlite3": "^5.1.7",
+    "zod": "^3.23.8"
+  }
+}
