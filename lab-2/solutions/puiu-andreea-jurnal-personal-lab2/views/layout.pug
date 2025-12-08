@@ -1,0 +1,28 @@
+doctype html
+html
+    head
+        meta(charset="UTF-8")
+        title Jurnal Personal
+        //pentru a nu avea posibilitatea de a naviga dupa logout
+        meta(http-equiv="Cache-Control" content="no-store")
+        meta(http-equiv="Pragma" content="no-cache")
+        meta(http-equiv="Expires" content="0")
+        link(rel="stylesheet" href="/css/style.css")
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet")
+    body
+        header
+            h2 Jurnal Personal
+        main
+            block content
+
+        // script care trateaza back-forward cache (bfcache)
+        script.
+            window.addEventListener("pageshow", function (event) {
+                // daca pagina este adusa din istoric (bfcache),
+                // fortam reload ca sa verifice sesiunea pe server
+                if (event.persisted) {
+                    window.location.reload();
+                }
+            });

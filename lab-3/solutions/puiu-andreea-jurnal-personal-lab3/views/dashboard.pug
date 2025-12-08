@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    .dashboard-container
+        h2 Bine ai venit, #{user.username}!
+
+        h3(style="margin-top:20px") Inregistrarile tale
+
+        if user.journals && user.journals.length
+            ul
+                each entry in user.journals
+                    li
+                        a(href=`/journal/${entry.id}`)
+                            span #{entry.title}
+                            span #{entry.date}
+        else
+            p(style="margin-top:20px") Nu ai nicio inregistrare in jurnal.
+
+        a.add-btn(href="/journal/new" style="margin-top:20px") Adauga inregistrare noua
+
+        a.logout-btn(href="/logout") Deconecteaza-te
