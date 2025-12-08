@@ -1,0 +1,6 @@
+{
+  "gifts": [
+    { "id": 1, "name": "Jucărie ursuleț", "price": 20 },
+    { "id": 2, "name": "Carte de colorat", "price": 10 }
+  ]
+}
