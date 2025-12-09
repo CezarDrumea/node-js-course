@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title || 'Quotes Library' %></title>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="/css/vars.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Page-specific CSS -->
+    <% if (extraCss && extraCss.length) { %>
+        <% extraCss.forEach(function(href) { %>
+            <link rel="stylesheet" href="<%= href %>">
+        <% }); %>
+    <% } %>
+</head>
+<body class="<%= bodyClass || '' %>">
+<header class="site-header">
+    <div class="app-shell site-header-inner">
+        <a href="/quotes" class="site-logo">Quotes Library</a>
+
+        <nav class="site-nav">
+            <a href="/quotes" class="site-nav-link">All quotes</a>
+            <a href="/quotes/new" class="site-nav-link">Add quote</a>
+        </nav>
+    </div>
+</header>
+
+<main class="app-shell">
+    <section class="card">

@@ -1,0 +1,50 @@
+<%- include('../partials/header', {
+title: 'Quotes Library',
+bodyClass: 'page-quotes-index',
+extraCss: ['/css/quotesIndex.css']
+}) %>
+
+<header class="page-header">
+    <div class="stack-sm">
+        <h1 class="page-title">Quotes Library</h1>
+        <p class="page-subtitle">A curated collection of lines from movies, books &amp; more.</p>
+    </div>
+    <div class="btn-row">
+        <a href="/quotes/new" class="btn btn-primary">＋ Add new quote</a>
+    </div>
+</header>
+
+<% if (!quotes || quotes.length === 0) { %>
+    <p class="page-subtitle">No quotes yet. Start by adding your first one ✨</p>
+<% } else { %>
+    <!-- Each quote will look like its own horizontal card -->
+    <ol class="quote-list">
+        <% quotes.forEach(function(quote) { %>
+            <li class="quote-card">
+                <div class="quote-main">
+                    <div class="quote-text"><%= quote.text %></div>
+
+                    <div class="quote-meta">
+                        <span class="quote-author"><%= quote.author %></span>
+                        <% if (quote.source) { %>
+                            <span>· <%= quote.source %></span>
+                        <% } %>
+                        <% if (quote.type) { %>
+                            <span class="quote-pill"><%= quote.type %></span>
+                        <% } %>
+                    </div>
+                </div>
+
+                <div class="quote-actions">
+                    <a href="/quotes/<%= quote.id %>" class="btn btn-secondary">View</a>
+                    <a href="/quotes/<%= quote.id %>/edit" class="btn btn-ghost">Edit</a>
+                    <form action="/quotes/<%= quote.id %>/delete" method="POST">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </li>
+        <% }) %>
+    </ol>
+<% } %>
+
+<%- include('../partials/footer') %>

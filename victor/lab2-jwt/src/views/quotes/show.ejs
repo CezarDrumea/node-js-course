@@ -1,0 +1,42 @@
+<%- include('../partials/header', {
+title: 'Quote details',
+bodyClass: 'page-quote-detail',
+extraCss: ['/css/quoteDetail.css']
+}) %>
+
+<header class="page-header">
+    <div class="stack-sm">
+        <h1 class="page-title">Quote details</h1>
+        <p class="page-subtitle">View and manage this quote.</p>
+    </div>
+
+    <div class="btn-row">
+        <a href="/quotes" class="btn btn-ghost">← Back to list</a>
+        <a href="/quotes/<%= quote.id %>/edit" class="btn btn-secondary">Edit</a>
+    </div>
+</header>
+
+<div class="quote-block">
+    <p class="quote-block-text"><%= quote.text %></p>
+    <div class="quote-block-meta">
+        <div>
+            <strong><%= quote.author %></strong>
+            <% if (quote.source) { %>
+                · <%= quote.source %>
+            <% } %>
+        </div>
+        <% if (quote.type) { %>
+            <div class="quote-pill" style="margin-top:6px; display:inline-block;"><%= quote.type %></div>
+        <% } %>
+    </div>
+</div>
+
+<div class="divider"></div>
+
+<footer class="form-footer">
+    <form action="/quotes/<%= quote.id %>/delete" method="POST">
+        <button type="submit" class="btn btn-danger">Delete quote</button>
+    </form>
+</footer>
+
+<%- include('../partials/footer') %>

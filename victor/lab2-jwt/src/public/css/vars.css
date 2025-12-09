@@ -1,0 +1,19 @@
+/* ===== Vars & Reset ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #F5E7C6;
+    --bg-card: #FAF3E1;
+    --text-main: #222222;
+    --text-muted: #222222;
+    --accent: #FF6D1F;
+    --accent-soft: #FAF3E1;
+    --accent-hover: #FF6D1F;
+    --danger: #ef4444;
+    --border-subtle: #F5E7C6;
+}

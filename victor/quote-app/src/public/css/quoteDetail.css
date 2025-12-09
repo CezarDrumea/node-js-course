@@ -1,0 +1,39 @@
+/* ===== Quote detail page ===== */
+
+.page-quote-detail .card {
+    /* reserved for any future tweaks */
+}
+
+.quote-block {
+    padding: 18px 18px 14px;
+    border-radius: 9px;
+    background: #f9fafb;
+    border: 1px solid var(--accent);
+}
+
+.quote-block-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.quote-block-text::before {
+    content: "“";
+    font-size: 2.2rem;
+    vertical-align: top;
+    margin-right: 4px;
+    opacity: 0.55;
+}
+
+.quote-block-text::after {
+    content: "”";
+    font-size: 2.2rem;
+    vertical-align: bottom;
+    margin-left: 2px;
+    opacity: 0.55;
+}
+
+.quote-block-meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}

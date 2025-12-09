@@ -1,0 +1,55 @@
+<%- include('../partials/header', {
+title: 'Add quote',
+bodyClass: 'page-quote-form',
+extraCss: ['/css/quoteForm.css']
+}) %>
+
+<header class="page-header">
+    <div class="stack-sm">
+        <h1 class="page-title">Add a new quote</h1>
+        <p class="page-subtitle">Save a line from a movie, book, series or anything else.</p>
+    </div>
+    <div class="btn-row">
+        <a href="/quotes" class="btn btn-ghost">← Back to list</a>
+    </div>
+</header>
+
+<form action="/quotes" method="POST" class="form">
+    <% if (typeof error !== 'undefined' && error) { %>
+        <p class="page-subtitle" style="color: #b91c1c; margin-bottom: 8px;">
+            <%= error %>
+        </p>
+    <% } %>
+
+    <div class="form-group">
+        <label class="form-label">Text</label>
+        <textarea name="text" required class="form-textarea" placeholder="Type the quote here..."></textarea>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Author</label>
+        <input type="text" name="author" required class="form-input" placeholder="Who said it?">
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Source (movie, book, etc.)</label>
+        <input type="text" name="source" class="form-input" placeholder="Movie title, book name, series, etc.">
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Type</label>
+        <select name="type" class="form-select">
+            <option value="movie">Movie</option>
+            <option value="book">Book</option>
+            <option value="series">Series</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+
+    <div class="form-footer">
+        <a href="/quotes" class="btn btn-ghost">Cancel</a>
+        <button type="submit" class="btn btn-primary">Save quote</button>
+    </div>
+</form>
+
+<%- include('../partials/footer') %>

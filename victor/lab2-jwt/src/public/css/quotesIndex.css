@@ -1,0 +1,112 @@
+/* ===== Quotes list page ===== */
+
+.page-quotes-index .page-header {
+    margin-bottom: 20px;
+}
+
+.quote-list {
+    /* no bullets / dots */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    /* we'll use a counter for numbers */
+    counter-reset: quote-counter;
+}
+
+/* Horizontal card */
+.quote-card {
+    position: relative;
+    counter-increment: quote-counter;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 32px; /* space between text and buttons */
+
+    padding: 14px 16px 12px 42px; /* left padding to make room for number */
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+    background: rgba(255, 255, 255, 0.9);
+
+    /* no transitions, no shadows */
+}
+
+/* Number label (no bullet, just the number) */
+.quote-card::before {
+    content: counter(quote-counter);
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+/* Left side: text + meta */
+.quote-main {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;       /* take remaining width */
+    min-width: 0;  /* allow text wrapping */
+}
+
+.quote-text {
+    font-size: 0.98rem;
+    line-height: 1.5;
+}
+
+.quote-text::before {
+    content: "“";
+}
+
+.quote-text::after {
+    content: "”";
+}
+
+.quote-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.quote-author {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Right side: buttons */
+.quote-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.quote-actions form {
+    margin: 0;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 640px) {
+    .quote-card {
+        flex-direction: column;
+        align-items: stretch;
+        padding-left: 42px;
+    }
+
+    .quote-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+    }
+}
