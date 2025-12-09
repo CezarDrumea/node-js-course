@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista mea de lectură</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "#faf5ff",
+                100: "#f3e8ff",
+                500: "#a855f7",
+                600: "#9333ea",
+                700: "#7c3aed",
+                800: "#6b21a8",
+                900: "#581c87",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50 min-h-screen flex flex-col">
+    <header
+      class="bg-gradient-to-r from-primary-700 to-primary-800 text-white shadow-lg"
+    >
+      <div class="container mx-auto px-4 py-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="flex items-center space-x-3 mb-4 md:mb-0">
+            <i class="fas fa-book-open text-3xl"></i>
+            <a href="/"> <h1 class="text-3xl font-bold">MyReads</h1></a>
+          </div>
+
+          <div class="flex space-x-3">
+            <a
+              href="/carti/adauga"
+              class="bg-white text-primary-700 font-semibold py-2 px-4 rounded-full flex items-center space-x-2"
+            >
+              <i class="fas fa-plus"></i>
+              <span>Adaugă o carte</span>
+            </a>
+            <a
+              href="/logout"
+              class="bg-red-600 font-semibold py-2 px-4 rounded-full flex items-center space-x-2"
+            >
+              <i class="fas fa-sign-out-alt"></i>
+              <span>Delogare</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+      <% if (carti.length === 0) { %>
+
+      <div class="max-w-lg mx-auto text-center py-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <div
+            class="w-24 h-24 mx-auto mb-6 bg-primary-50 rounded-full flex items-center justify-center"
+          >
+            <i class="fas fa-book text-4xl text-primary-500"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">
+            Nu ai adăugat încă nicio carte
+          </h2>
+          <p class="text-gray-600 mb-6">
+            Începe să-ți construiești colecția de lectură adăugând prima ta
+            carte!
+          </p>
+          <a
+            href="/carti/adauga"
+            class="inline-block bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-full transition duration-300"
+          >
+            Adaugă prima carte
+          </a>
+        </div>
+      </div>
+      <% } else { %>
+      <!-- Lista cu carti -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <% carti.forEach(c => { %>
+        <div
+          class="book-card bg-white rounded-xl shadow-md overflow-hidden border-l-4 <%= c.citita ? 'border-green-500' : 'border-primary-500' %>"
+        >
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <h2 class="text-xl font-bold text-gray-800 truncate">
+                <%= c.titlu %>
+              </h2>
+              <span class="flex-shrink-0 ml-2">
+                <% if (c.citita) { %>
+                <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                <% } else { %>
+                <i class="fas fa-bookmark text-primary-500 text-xl"></i>
+                <% } %>
+              </span>
+            </div>
+
+            <p class="text-blue-600 mb-2 flex items-center">
+              <i class="fas fa-user-edit text-primary-400 mr-3"></i>
+              <span class="font-medium">de <%= c.autor %></span>
+            </p>
+
+            <div class="mb-3">
+              <% if (c.citita) { %>
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800"
+              >
+                <i class="fas fa-check mr-1"></i> Citită
+              </span>
+              <% } else { %>
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800"
+              >
+                <i class="fas fa-clock mr-1"></i> Necitită
+              </span>
+              <% } %>
+            </div>
+            <div class="mb-3">
+              <span class="text-yellow-500">
+                <% for (let i = 1; i <= 5; i++) { %> <% if (i <= c.rating) { %>
+                <i class="fas fa-star"></i>
+                <% } else { %>
+                <i class="far fa-star"></i>
+                <% } %> <% } %>
+              </span>
+            </div>
+
+            <div class="flex space-x-2">
+              <form
+                action="/carti/citita/<%= c.id %>"
+                method="POST"
+                class="flex-1"
+              >
+                <button
+                  class="w-full bg-primary-500 hover:bg-primary-600 text-white py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center"
+                  type="submit"
+                >
+                  <i class="fas fa-<%= c.citita ? 'undo' : 'check' %> mr-2"></i>
+                  <%= c.citita ? 'Marcare necitită' : 'Marchează citită' %>
+                </button>
+              </form>
+              <form action="/carti/sterge/<%= c.id %>" method="POST">
+                <button
+                  class="bg-red-500 hover:bg-red-600 text-white py-2 px-4"
+                  type="submit"
+                >
+                  <i class="fas fa-trash"></i>
+                </button>
+              </form>
+              <a
+                href="/carti/modifica/<%= c.id %>"
+                class="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center"
+              >
+                <i class="fas fa-pen"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+      <% } %>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="bg-gradient-to-r from-primary-800 to-primary-900 text-white py-6 mt-8"
+    >
+      <div class="container mx-auto px-4 text-center">
+        <p class="flex items-center justify-center space-x-2">
+          <i class="fas fa-heart text-pink-400"></i>
+          <span>MyReads</span>
+        </p>
+        <p class="text-primary-200 text-sm mt-2">
+          Gestionarea ta simplă și elegantă a cărților
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
