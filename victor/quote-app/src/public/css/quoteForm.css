@@ -1,0 +1,17 @@
+/* ===== Quote form pages (new & edit) ===== */
+
+/* Use flexbox on main to center the card horizontally */
+.page-quote-form main {
+    display: flex;
+    justify-content: center;
+}
+
+/* Card width constrained; flex is doing the centering */
+.page-quote-form .card {
+    max-width: 720px;
+    width: 100%;
+}
+
+.page-quote-form .page-header {
+    margin-bottom: 18px;
+}

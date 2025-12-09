@@ -1,0 +1,25 @@
+{
+  "quotes": [
+    {
+      "id": "1",
+      "text": "May the Force be with you.",
+      "author": "Obi-Wan Kenobi",
+      "source": "Star Wars",
+      "type": "movie"
+    },
+    {
+      "id": "2",
+      "text": "Not all those who wander are lost.",
+      "author": "J.R.R. Tolkien",
+      "source": "The Lord of the Rings",
+      "type": "book"
+    },
+    {
+      "text": "Outside of a dog, a book is man's best friend. Inside of a dog it's too dark to read.",
+      "author": "Groucho Marx",
+      "source": "The Essential Groucho: Writings For By And About Groucho Marx",
+      "type": "book",
+      "id": "942f"
+    }
+  ]
+}

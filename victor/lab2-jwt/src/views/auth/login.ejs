@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/vars.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/quote-form.css">
+</head>
+<body class="page-quote-form">
+<main class="app-shell">
+    <section class="card">
+        <header class="page-header card-section-header">
+            <div class="stack-sm">
+                <h1 class="page-title">Login</h1>
+                <p class="page-subtitle">Sign in to manage your quotes.</p>
+            </div>
+        </header>
+
+        <form action="/login" method="POST" class="form">
+            <% if (error) { %>
+                <p class="page-subtitle" style="color: #b91c1c; margin-bottom: 8px;">
+                    <%= error %>
+                </p>
+            <% } %>
+
+            <div class="form-group">
+                <label class="form-label">Username</label>
+                <input type="text" name="username" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <input type="password" name="password" class="form-input" required>
+            </div>
+
+            <div class="form-footer">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </form>
+    </section>
+</main>
+</body>
+</html>
