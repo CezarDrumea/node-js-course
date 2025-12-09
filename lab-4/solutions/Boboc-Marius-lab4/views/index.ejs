@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Urmăritor de cheltuieli</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="top-bar">
+        <h1>Urmăritor de cheltuieli</h1>
+        <div class="user-info">
+          <span>Bun venit, <strong><%= username %></strong></span>
+          <a href="/logout" class="logout-link">Logout</a>
+        </div>
+      </header>
+
+      <% if (error) { %>
+      <div class="alert alert-error"><%= error %></div>
+      <% } %>
+
+      <section class="summary">
+        <h2>Rezumat</h2>
+        <p>Total cheltuieli: <strong><%= total %> lei</strong></p>
+      </section>
+
+      <section class="add-expense">
+        <h2>Adaugă cheltuială</h2>
+        <form action="/add" method="POST" class="form">
+          <div class="form-group">
+            <label for="description">Descriere</label>
+            <input type="text" id="description" name="description" required />
+          </div>
+
+          <div class="form-group">
+            <label for="amount">Sumă (lei)</label>
+            <input
+              type="number"
+              id="amount"
+              name="amount"
+              step="0.01"
+              required
+            />
+          </div>
+
+          <div class="form-group category-select">
+            <label for="category" class="text-category">Categorie</label>
+            <select id="category" name="category" required>
+              <option value="">Alege o categorie...</option>
+              <option value="Mancare">Mâncare</option>
+              <option value="Transport">Transport</option>
+              <option value="Chirie">Chirie</option>
+              <option value="Utilitati">Utilități</option>
+              <option value="Divertisment">Divertisment</option>
+              <option value="Studii">Studii</option>
+              <option value="Sanatate">Sănătate</option>
+              <option value="Altele">Altele</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="date">Data</label>
+            <input type="date" id="date" name="date" />
+          </div>
+
+          <button type="submit">Salvează</button>
+        </form>
+      </section>
+
+      <section class="list">
+        <h2>Lista cheltuielilor</h2>
+
+        <% if (expenses.length === 0) { %>
+        <p>Nu există cheltuieli încă.</p>
+        <% } else { %>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Descriere</th>
+              <th>Sumă</th>
+              <th>Categorie</th>
+              <th>Data</th>
+              <th>Acțiuni</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% expenses.forEach(exp => { %>
+            <tr>
+              <td><%= exp.id %></td>
+              <td><%= exp.description %></td>
+              <td><%= exp.amount %> lei</td>
+              <td><%= exp.category %></td>
+              <td><%= exp.date %></td>
+              <td>
+                <form
+                  action="/delete/<%= exp.id %>"
+                  method="POST"
+                  onsubmit="return confirm('Sigur vrei sa stergi?');"
+                >
+                  <button type="submit" class="btn-delete">Șterge</button>
+                </form>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <% } %>
+      </section>
+    </div>
+  </body>
+</html>
