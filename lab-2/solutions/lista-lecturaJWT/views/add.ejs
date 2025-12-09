@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Adaugă o carte</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "#faf5ff",
+                100: "#f3e8ff",
+                500: "#a855f7",
+                600: "#9333ea",
+                700: "#7c3aed",
+                800: "#6b21a8",
+                900: "#581c87",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50 min-h-screen flex flex-col">
+    <header
+      class="bg-gradient-to-r from-primary-700 to-primary-800 text-white shadow-lg"
+    >
+      <div class="container mx-auto px-4 py-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="flex items-center space-x-3 mb-4 md:mb-0">
+            <i class="fas fa-book-open text-3xl"></i>
+            <a href="/"><h1 class="text-3xl font-bold">MyReads</h1></a>
+          </div>
+          <nav class="flex space-x-4">
+            <a
+              href="/"
+              class="bg-white text-primary-700 font-semibold py-2 px-4 rounded-full flex items-center space-x-2"
+            >
+              <i class="fas fa-home"></i>
+              <span>Acasă</span>
+            </a>
+            <a
+              href="/logout"
+              class="bg-red-600 font-semibold py-2 px-4 rounded-full flex items-center space-x-2"
+            >
+              <i class="fas fa-sign-out-alt"></i>
+              <span>Delogare</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+      <div class="max-w-lg mx-auto">
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+          <div class="text-center mb-8">
+            <div
+              class="w-16 h-16 mx-auto mb-4 bg-primary-100 rounded-full flex items-center justify-center"
+            >
+              <i class="fas fa-book-medical text-2xl text-primary-600"></i>
+            </div>
+            <h1 class="text-3xl font-bold text-gray-800">
+              Adaugă o carte nouă
+            </h1>
+            <p class="text-gray-600 mt-2">Completează detaliile cărții</p>
+          </div>
+
+          <form action="/carti/adauga" method="POST" class="space-y-6">
+            <div>
+              <label
+                for="titlu"
+                class="block text-sm font-medium text-gray-700 mb-2"
+              >
+                <i class="fas fa-book text-primary-500 mr-2"></i>Titlul cărții *
+              </label>
+              <input
+                type="text"
+                id="titlu"
+                name="titlu"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                placeholder="Introdu titlul cărții"
+              />
+              <% if (errors && errors.titlu) { %>
+              <p class="text-red-600 text-sm mt-1"><%= errors.titlu %></p>
+              <% } %>
+            </div>
+
+            <div>
+              <label
+                for="autor"
+                class="block text-sm font-medium text-gray-700 mb-2"
+              >
+                <i class="fas fa-user-edit text-primary-500 mr-2"></i>Autor *
+              </label>
+              <input
+                type="text"
+                id="autor"
+                name="autor"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                placeholder="Introdu numele autorului"
+              />
+              <% if (errors && errors.autor) { %>
+              <p class="text-red-600 text-sm mt-1"><%= errors.autor %></p>
+              <% } %>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                <i class="fas fa-bookmark text-primary-500 mr-2"></i>Status
+                citire
+              </label>
+              <div class="grid grid-cols-2 gap-2">
+                <label
+                  class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50"
+                >
+                  <input
+                    type="radio"
+                    name="citita"
+                    value="false"
+                    class="mr-3 text-primary-600"
+                    checked
+                  />
+                  <div>
+                    <div class="font-medium">📘 Necitită</div>
+                  </div>
+                </label>
+                <label
+                  class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50"
+                >
+                  <input
+                    type="radio"
+                    name="citita"
+                    value="true"
+                    class="mr-3 text-primary-600"
+                  />
+                  <div>
+                    <div class="font-medium">✅ Citită</div>
+                  </div>
+                </label>
+              </div>
+              <% if (errors && errors.citita) { %>
+              <p class="text-red-600 text-sm mt-1"><%= errors.citita %></p>
+              <% } %>
+            </div>
+
+            <div>
+              <label
+                for="rating"
+                class="block text-sm font-medium text-gray-700 mb-2"
+              >
+                <i class="fas fa-star text-primary-500 mr-2"></i>Rating
+              </label>
+              <select
+                id="rating"
+                name="rating"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+              >
+                <option value="">Fără rating</option>
+                <option value="1">⭐ (1) Slab</option>
+                <option value="2">⭐⭐ (2) Ok</option>
+                <option value="3">⭐⭐⭐ (3) Bun</option>
+                <option value="4">⭐⭐⭐⭐ (4) Foarte bun</option>
+                <option value="5">⭐⭐⭐⭐⭐ (5) Excelent</option>
+              </select>
+              <% if (errors && errors.rating) { %>
+              <p class="text-red-600 text-sm mt-1"><%= errors.rating %></p>
+              <% } %>
+            </div>
+
+            <div class="flex space-x-4 pt-4">
+              <a
+                href="/carti"
+                class="flex-1 bg-gray-200 text-gray-700 py-3 px-4 rounded-lg font-semibold text-center flex items-center justify-center"
+              >
+                <i class="fas fa-arrow-left mr-2"></i>
+                Înapoi
+              </a>
+
+              <button
+                type="submit"
+                class="flex-1 bg-gradient-to-r from-primary-600 to-primary-700 text-white py-3 px-4 rounded-lg font-semibold flex items-center justify-center"
+              >
+                <i class="fas fa-plus mr-2"></i>
+                Adaugă Cartea
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer
+      class="bg-gradient-to-r from-primary-800 to-primary-900 text-white py-6 mt-8"
+    >
+      <div class="container mx-auto px-4 text-center">
+        <p class="flex items-center justify-center space-x-2">
+          <i class="fas fa-heart text-pink-400"></i>
+          <span>MyReads</span>
+        </p>
+        <p class="text-primary-200 text-sm mt-2">
+          Gestionarea ta simplă și elegantă a cărților
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

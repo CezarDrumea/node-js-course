@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>MyReads</title>
+  </head>
+  <body
+    class="bg-gradient-to-r from-purple-600 to-indigo-700 min-h-screen flex items-center justify-center p-4"
+  >
+    <div
+      class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full flex overflow-hidden"
+    >
+      <div
+        class="w-1/2 bg-gradient-to-br from-purple-50 to-indigo-50 p-10 flex flex-col items-center justify-center text-center relative"
+      >
+        <img
+          src="/im1.jpg"
+          alt="Carti"
+          class="rounded-3xl mb-6 shadow-lg border-4 border-purple-200"
+        />
+
+        <h2 class="text-3xl font-bold text-purple-700 mb-4">
+          Bucură-te de lectura!
+        </h2>
+
+        <p class="text-gray-700 text-center text-lg mb-6">
+          📚 Descoperă lumea fascinantă a cărților și creează-ți propria listă
+          de lectură. Inspiră-te și găsește povești care te vor însoți mereu!
+        </p>
+
+        <div
+          class="bg-purple-100 text-purple-800 px-6 py-3 rounded-xl shadow-md font-medium"
+        >
+          "Fiecare carte citită este o nouă aventură în mintea ta!"
+        </div>
+      </div>
+
+      <div class="w-1/2 p-10 flex flex-col items-center justify-center">
+        <h1 class="text-4xl font-bold mb-6 text-purple-700">MyReads</h1>
+
+        <% if (!user) { %>
+        <a
+          href="/login"
+          class="block bg-purple-600 text-white py-3 rounded-xl font-semibold mb-4 w-3/4 text-center hover:bg-purple-700 transition"
+        >
+          Autentificare
+        </a>
+        <a
+          href="/register"
+          class="block border border-purple-700 text-purple-700 py-3 rounded-xl font-semibold w-3/4 text-center hover:bg-purple-100 transition"
+        >
+          Înregistrare
+        </a>
+        <% } else { %>
+        <p class="text-gray-600 mb-6 text-center">Salut, <%= user.email %>!</p>
+        <a
+          href="/carti"
+          class="block bg-green-600 text-white py-3 rounded-xl font-semibold w-3/4 text-center hover:bg-green-700 transition mb-4"
+        >
+          Intră în aplicație
+        </a>
+        <a
+          href="/logout"
+          class="block bg-red-500 text-white py-3 rounded-xl font-semibold w-3/4 text-center hover:bg-red-600 transition"
+        >
+          Logout
+        </a>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>

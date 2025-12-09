@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1762187485570,
+    "titlu": "Tema pentru acasa",
+    "autor": "Nicolaie Dabija",
+    "citita": false,
+    "userId": 1764578359428,
+    "rating": ""
+  },
+  {
+    "id": 1762187508126,
+    "titlu": "Ion",
+    "autor": "Liviu Rebreanu",
+    "citita": false,
+    "userId": 1764578359428,
+    "gen": "",
+    "rating": "3"
+  },
+  {
+    "id": 1764019123456,
+    "titlu": "Maitreyi",
+    "autor": "Mircea Eliade",
+    "citita": false,
+    "userId": 1764019003684
+  },
+  {
+    "id": 1764597313657,
+    "titlu": "Tom Soer",
+    "autor": "Necunoscut",
+    "citita": true,
+    "rating": "1",
+    "userId": 1764578359428
+  },
+  {
+    "id": 1764608276772,
+    "titlu": "Mara",
+    "autor": "Ioan Slavici",
+    "citita": false,
+    "rating": "3",
+    "userId": 1764608215593
+  },
+  {
+    "id": 1765207896066,
+    "titlu": "Concert Rock",
+    "autor": "Agatha Charlote",
+    "citita": true,
+    "rating": "2",
+    "userId": 1765207769969
+  },
+  {
+    "id": 1765294372005,
+    "titlu": "Amintiri din copilarie",
+    "autor": "Ion Creangadfghj",
+    "citita": true,
+    "rating": "3",
+    "userId": 1764578359428
+  }
+]

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Register</title>
+  </head>
+
+  <body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-2xl shadow-md w-full max-w-md">
+      <h2 class="text-3xl font-bold text-center mb-6 text-indigo-700">
+        Înregistrare
+      </h2>
+
+      <% if (error) { %>
+      <p class="text-red-500 text-center mb-4"><%= error %></p>
+      <% } %>
+
+      <form method="POST">
+        <input
+          class="w-full p-3 border rounded mb-4"
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+        />
+        <input
+          class="w-full p-3 border rounded mb-4"
+          type="password"
+          name="parola"
+          placeholder="Parolă"
+          required
+        />
+
+        <button
+          class="w-full bg-indigo-600 text-white py-3 rounded-xl hover:bg-indigo-700 transition mb-4"
+        >
+          Creează cont
+        </button>
+      </form>
+
+      <p class="text-sm text-center mb-4">
+        Ai deja cont?
+        <a href="/login" class="text-indigo-600 font-bold">Loghează-te</a>
+      </p>
+
+      <!-- Buton Înapoi acasă -->
+      <div class="text-center">
+        <a
+          href="/"
+          class="inline-block border border-gray-400 text-gray-700 py-2 px-6 rounded-xl hover:bg-gray-100 transition"
+        >
+          Înapoi acasă
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
