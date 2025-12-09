@@ -1,0 +1,14 @@
+{
+  "name": "cookie-expense-tracker",
+  "version": "1.0.0",
+  "description": "Urmăritor de cheltuieli cu autentificare cookie-based",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}
