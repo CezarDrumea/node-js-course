@@ -1,0 +1,61 @@
+<%- include('partials/header', { title: "Profilul meu" })%>
+
+<div class="profile-page-wrapper">
+  <h2 class="section-title">Profilul meu</h2>
+  
+  <div class="user-info-wrapper">
+    <div class="profile-info">
+      <h3 class="username">👤 <%= user.username %></h3>
+      <button 
+        onclick="togglePasswordForm()" 
+        class="btn btn-secondary" 
+        style="margin-top: 1rem;">
+        🔐 Schimbă parola
+      </button>
+    </div>
+
+  <%- include('partials/change-password-form', { errors: errors || null, success: success || null, formData: formData || {} }) %>
+  </div>
+
+    <h2 class="section-title">Evenimentele mele (<%= events.length %>)</h2>    
+      <% if (events.length === 0) { %>
+        <p style="text-align: center; color: #666; padding: 10px;">
+          Nu ai niciun eveniment creat încă.
+        </p>
+        <a href="/events/add/new" style="width: fit-content; margin: 0 auto; display: block;">
+          <%- include('partials/button', {
+            type: 'button',
+            label: 'Creează primul eveniment',
+            icon: '➕',
+            extraClass: 'btn-primary'
+        }) %>
+        </a>
+      <% } else { %>
+        <div class="event-list">
+        <% events.forEach(event => { %>
+          <%- include('partials/event-card', { event }) %>
+        <% }) %>
+        </div>
+      <% } %>
+  </div>
+
+<script>
+  const passwordForm = document.getElementById('passwordForm');
+  if (passwordForm.dataset.show === 'true') {
+    passwordForm.style.display = 'block';
+  } else {
+    passwordForm.style.display = 'none';
+  }
+
+  function togglePasswordForm() {
+    const form = document.getElementById('passwordForm');
+    if (form.style.display === 'none') {
+      form.style.display = 'block';
+    } else {
+      form.style.display = 'none';
+      form.querySelector('form').reset();
+    }
+  }
+</script>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,6 @@
+<button 
+  type="<%= type || 'button' %>" 
+  class="btn <%= extraClass || '' %>"
+  <% if (typeof onclick !== 'undefined') { %>onclick="<%= onclick %>"<% } %>>
+  <%= icon ? icon + ' ' : '' %><%= label %>
+</button>

@@ -1,0 +1,87 @@
+<%- include('partials/header', { title: "Înregistrare" }) %>
+
+<div class="form-container">
+
+    <h2 class="form-title">Înregistrare</h2>
+    
+    <form action="/signup" method="POST" onsubmit="return validateForm()">
+      <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Username" 
+          value="<%= formData && formData.username ? formData.username : '' %>" 
+           required class="<%= errors?.username ? 'errorInput' : '' %>">
+    
+          <% if (errors?.username) { %>
+            <p class="error" style="margin-bottom: 10px;"><%= errors.username %></p>
+          <% } %>
+        </div>
+
+      <div class="form-group">
+        <label for="password">Parola</label>
+        <div class="password-wrapper">
+          <input type="password" id="password" name="password"
+              placeholder="Parola trebuie să aibă 8-16 caractere, literă mare, literă mică, cifră și simbol" 
+              value="<%= formData && formData.password ? formData.password : '' %>" 
+              required 
+              class="<%= errors?.password ? 'errorInput' : '' %>">
+          <button type="button" onclick="togglePasswordField('password', 'toggleIcon1')" class="password-toggle-btn">
+              <i id="toggleIcon1" class="fa-solid fa-eye"></i>
+          </button>
+        </div>
+        <% if (errors?.password) { %>
+          <p class="error" style="margin-bottom: 10px;"><%= errors.password %></p>
+        <% } %>
+      </div>
+
+      <div class="form-group">
+        <label for="passwordConfirm">Confirmă parola</label>
+        <div class="password-wrapper">
+          <input type="password" id="passwordConfirm" name="passwordConfirm" 
+              placeholder="Confirmă parola introdusă mai sus"  
+              value="<%= formData && formData.passwordConfirm ? formData.passwordConfirm : '' %>" 
+              required 
+              class="<%= errors?.passwordConfirm ? 'errorInput' : '' %>">
+          <button type="button" onclick="togglePasswordField('passwordConfirm', 'toggleIcon2')" class="password-toggle-btn">
+              <i id="toggleIcon2" class="fa-solid fa-eye"></i>
+          </button>
+        </div>
+        <% if (errors?.passwordConfirm) { %>
+          <p class="error" style="margin-bottom: 10px;"><%= errors.passwordConfirm %></p>
+        <% } %>
+      </div>
+      
+
+      <%- include('partials/button', {
+        type: 'submit',
+        label: 'Înregistrează-te',
+        icon: '📝',
+        extraClass: 'btn-primary'
+      }) %>
+      <%- include('partials/link', {
+        href: '/login',
+        label: 'Ai deja un cont? Autentificare',
+        icon: '← ',
+        extraClass: ''
+      }) %>
+    </form>
+</div>
+
+<script>
+function togglePasswordField(inputId, iconId) {
+  const passwordInput = document.getElementById(inputId);
+  const toggleIcon = document.getElementById(iconId);
+    
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    toggleIcon.classList.remove('fa-eye');
+    toggleIcon.classList.add('fa-eye-slash');
+  } else {
+    passwordInput.type = 'password';
+    toggleIcon.classList.remove('fa-eye-slash');
+    toggleIcon.classList.add('fa-eye');
+  }
+}
+</script>
+
+<%- include('partials/footer') %>
+

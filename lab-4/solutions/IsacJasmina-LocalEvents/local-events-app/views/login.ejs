@@ -1,0 +1,63 @@
+<%- include('partials/header', { title: "Autentificare" }) %>
+
+<div class="form-container">
+  <h2 class="form-title">Autentificare</h2>
+  <form action="/login" method="POST">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Username" value ="<%= formData && formData.username ? formData.username : '' %>" required class="<%= errors?.username || errors?.general ? 'errorInput' : '' %>">
+      <% if (errors?.username) { %>
+        <div class="error"><%= errors?.username %></div>
+      <% } %>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Parola</label>
+      <div class="password-wrapper">
+        <input type="password" id="password" name="password" placeholder="Parola" 
+          value="<%= formData && formData.password ? formData.password : '' %>" 
+          required 
+          class="<%= errors?.password || errors?.general ? 'errorInput' : '' %>">
+        <button type="button" onclick="togglePassword()" class="password-toggle-btn">
+          <i id="toggleIcon" class="fa-solid fa-eye"></i>
+        </button>
+      </div>
+      <% if (errors?.general || errors?.password) { %>
+        <div class="error" style="margin-bottom: 10px;"><%= errors?.password ? errors?.password : errors?.general %></div>
+      <% } %>
+    </div>
+
+    <%- include('partials/button', {
+      type: 'submit',
+      label: 'Login',
+      icon: '🔑',
+      extraClass: 'btn-primary'
+    }) %>
+    <%- include('partials/link', {
+      href: '/signup',
+      label: 'Nu ai încă un cont? Înregistrează-te',
+      icon: '← ',
+      extraClass: ''
+    }) %>
+  </form>
+</div>
+
+<script>
+function togglePassword() {
+  const passwordInput = document.getElementById('password');
+  const toggleIcon = document.getElementById('toggleIcon');
+    
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    toggleIcon.classList.remove('fa-eye');
+    toggleIcon.classList.add('fa-eye-slash');
+  } else {
+    passwordInput.type = 'password';
+    toggleIcon.classList.remove('fa-eye-slash');
+    toggleIcon.classList.add('fa-eye');
+  }
+}
+</script>
+
+<%- include('partials/footer') %>
+

@@ -1,0 +1,118 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "title": "Târgul de Toamnă Chișinău",
+      "description": "Eveniment tradițional cu produse locale, muzică populară și activități pentru copii.",
+      "date": "2025-11-10",
+      "time": "10:00",
+      "location": "Piața Marii Adunări Naționale, Chișinău",
+      "category": "Târg",
+      "image": "targ-toamna.jpg",
+      "organizer": "Primăria Chișinău",
+      "price": "50 MDL"
+    },
+    {
+      "id": "2",
+      "title": "Concert de Crăciun",
+      "description": "Concert caritabil susținut de Orchestra Națională, cu invitați speciali.",
+      "date": "2025-12-23",
+      "time": "19:30",
+      "location": "Sala cu Orgă, Chișinău",
+      "category": "Concert",
+      "image": "concert-craciun.jpg",
+      "organizer": "Filarmonica Națională",
+      "price": "150 MDL"
+    },
+    {
+      "id": "3",
+      "title": "Hackathon TechNova 2025",
+      "description": "Competiție IT de 48 de ore pentru tineri dezvoltatori și designeri.",
+      "date": "2025-11-20",
+      "time": "09:00",
+      "location": "Tekwill, Chișinău",
+      "category": "Tehnologie",
+      "image": "hackathon.png",
+      "organizer": "TechNova Moldova",
+      "price": "FREE"
+    },
+    {
+      "id": "4",
+      "title": "Festivalul Vinului Moldovenesc",
+      "description": "Degustare de vinuri autohtone, muzică live și mâncăruri tradiționale.",
+      "date": "2025-10-05",
+      "time": "12:00",
+      "location": "Parcul Dendrariu, Chișinău",
+      "category": "Festival",
+      "image": "festival-vin.jpg",
+      "organizer": "Oficiul Național al Viei și Vinului",
+      "price": "200 MDL"
+    },
+    {
+      "id": "5",
+      "title": "Atelier de Gătit Moldovenesc",
+      "description": "Atelier interactiv unde participanții învață să prepare mâncăruri tradiționale.",
+      "date": "2025-11-15",
+      "time": "14:00",
+      "location": "Casa Tradițiilor, Chișinău",
+      "category": "Atelier",
+      "image": "atelier-gatit.jpg",
+      "organizer": "Asociația Culturala Moldovenească",
+      "price": "100 MDL"
+    },
+    {
+      "id": "6",
+      "title": "Maratonul de Lectură Chișinău",
+      "description": "Eveniment literar pentru toate vârstele cu lecturi publice și întâlniri cu autori.",
+      "date": "2025-12-01",
+      "time": "11:00",
+      "location": "Biblioteca Națională, Chișinău",
+      "category": "Cultură",
+      "image": "maraton-lectura.jpg",
+      "organizer": "Biblioteca Națională",
+      "price": "FREE"
+    },
+    {
+      "id": "7",
+      "title": "Concert Rock editat",
+      "description": "Vino sa te distrezi cu muzica live!",
+      "date": "2025-11-28",
+      "time": "19:00",
+      "location": "Strada Pietonala",
+      "category": "Muzica",
+      "organizer": "Festivalul Național al Muzicii",
+      "price": "150 MDL",
+      "existingImage": "oameni-strada-pietonala.jpg",
+      "image": "1762697300363-917199342.jpg"
+    },
+    {
+      "id": "5c48",
+      "title": "Genshin Impact Fan Meeting",
+      "description": "Vino sa te distrezi impreuna cu alti fani Genshin la un eveniment dedicat gamerilor!",
+      "date": "2025-11-26",
+      "time": "14:00",
+      "location": "Mediacor",
+      "category": "Gaming",
+      "organizer": "GoCon Moldova",
+      "price": "80 MDL",
+      "image": "1762700728608-411786387.png"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "root"
+    },
+    {
+      "id": "1fcc",
+      "username": "user1",
+      "password": "0a041b9462caa4a31bac3567e0b6e6fd9100787db2ab433d96f6d178cabfce90"
+    },
+    {
+      "id": "bf52",
+      "username": "user2",
+      "password": "6025d18fe48abd45168528f18a82e265dd98d421a7084aa09f61b341703901a3"
+    }
+  ]
+}

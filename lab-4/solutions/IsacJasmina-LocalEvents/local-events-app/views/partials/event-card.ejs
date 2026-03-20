@@ -1,0 +1,54 @@
+<div class="event-card">
+  <div class="event-image">
+    <a href="<%= event.url || ('/events/' + event.id) %>">
+      <img
+        src="/images/<%= event.image || '/images/default-event.jpg' %>"
+        alt="<%= event.title %>"
+      />
+    </a>
+  </div>
+
+  <div class="event-info">
+    <span class="event-category"><%= event.category.name %></span>
+
+    <h3 class="event-title">
+      <a href="<%= event.url || ('/events/' + event.id) %>">
+        <%= event.title %>
+      </a>
+    </h3>
+
+    <% if (event.description) { %>
+      <p class="event-description">
+        <%= event.description.length > 150
+          ? event.description.substring(0, 150) + '...'
+          : event.description %>
+      </p>
+    <% } %>
+
+    <span class="event-location">
+      <i class="fa-solid fa-location-dot"></i> 
+      <%= event.location %>
+    </span>
+
+    <% 
+      const dateObj = new Date(event.date);
+      const options = { day: '2-digit', month: 'short', year: 'numeric' };
+      const formattedDate = dateObj.toLocaleDateString('en-GB', options);
+    %>
+
+    <div class="event-meta">
+      <span class="event-price">
+        <i class="fa-solid fa-ticket"></i>
+        <%= event.price ? event.price : 'FREE' %>
+      </span>
+
+      <p class="event-datetime align-right">
+        <i class="fa-solid fa-calendar-days"></i> <%= formattedDate %>
+        <% if (event.time) { %>
+          &nbsp;&nbsp;
+          <i class="fa-solid fa-clock"></i> <%= event.time %>
+        <% } %>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<% if (typeof href !== 'undefined' && href) { %>
+  <a href="<%= href %>" class="btn <%= extraClass || '' %>" target="_blank" rel="noopener noreferrer">
+    <%= icon ? icon + ' ' : '' %><%= label %>
+  </a>
+<% } else { %>
+  <button 
+    type="<%= type || 'button' %>" 
+    class="btn <%= extraClass || '' %>">
+    <%= icon ? icon + ' ' : '' %><%= label %>
+  </button>
+<% } %>
